@@ -9,14 +9,14 @@ export interface Post {
   title: string;
   PostText: string;
   image?: File
-  Sections: Section[];
+  Sections?: Section[];
 }
 export interface Category {
   id: number;
   title: string;
-  PostText: string;
+  CategoryText: string;
   image?: File
-  Posts: Post[];
+  Posts?: Post[];
 }
 export interface User {
   id: number;
