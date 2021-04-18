@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MainBlogComponent } from './main-blog/main-blog.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
+import { CategoryViewComponent } from './category-view/category-view.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/MainView', pathMatch: 'full' },
   { path: 'MainView', component:  MainBlogComponent},
-  { path: 'ArticleView', component:  ArticleViewComponent},
+  { path: 'CategoryView/:productId', component:  CategoryViewComponent},
 ];
 
 @NgModule({

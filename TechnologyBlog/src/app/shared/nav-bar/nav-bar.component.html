@@ -2,7 +2,10 @@
     <a class="navbar-brand" href="#">LOGO</a>
 
     <div class="row" >
-        <div class="col-xs-6 navbar-brand" *ngFor="let category of categoryList"> {{category.title}}</div>
+        <diV *ngFor="let category of categoryList">
+            <a [routerLink]="['CategoryView/', category.id]" > <div class="col-xs-6 navbar-brand" > {{category.title}}</div></a>
+        </diV>
+        
     </div>
     <div class="row" >
         <fa-icon  class="col-xs-6 navbar-brand" [icon]="iconSearch"></fa-icon>

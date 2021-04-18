@@ -3,6 +3,7 @@ import { DataBaseService } from 'src/app/services/data-base.service'
 import { Section, Post, Category, User, MainSite } from 'src/app/shared/data/InterFaces/InterFaces';
 import { faSearch, faUser, faPlus } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -14,7 +15,7 @@ export class NavBarComponent implements OnInit {
   iconSearch = faSearch;
   iconUser = faUser;
   iconPlus = faPlus;
-  
+
   categoryList: Category[];
 
   ngOnInit(): void {
