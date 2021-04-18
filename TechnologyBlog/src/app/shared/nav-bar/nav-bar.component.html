@@ -1,12 +1,12 @@
 <nav class="navbar sticky-top navbar-dark bg-dark">
     <a class="navbar-brand" href="#">LOGO</a>
 
-    <div class="row" *ngFor="let category of categoryList">
-        <div class="col-xs-6 navbar-brand"> {{category.title}}</div>
+    <div class="row" >
+        <div class="col-xs-6 navbar-brand" *ngFor="let category of categoryList"> {{category.title}}</div>
     </div>
-    <div>
-        <i class="fas fa-search"></i>
-        <i class="fas fa-user"></i>
-        <i class="fas fa-plus"></i>
+    <div class="row" >
+        <fa-icon  class="col-xs-6 navbar-brand" [icon]="iconSearch"></fa-icon>
+        <fa-icon  class="col-xs-6 navbar-brand" [icon]="iconUser"></fa-icon>
+        <fa-icon  class="col-xs-6 navbar-brand" [icon]="iconPlus"></fa-icon>
     </div>
 </nav>
