@@ -9,10 +9,11 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./main-blog.component.scss']
 })
 export class MainBlogComponent implements OnInit {
-  public imagePath: string
+  
   constructor(private backend: DataBaseService) { }
-  iconArrow = faArrowRight;
 
+  public imagePath: string
+  iconArrow = faArrowRight;
   mainSite: MainSite;
 
   ngOnInit(): void {

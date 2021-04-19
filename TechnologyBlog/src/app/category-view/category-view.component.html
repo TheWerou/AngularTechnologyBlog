@@ -1,1 +1,47 @@
-<p>category-view works!</p>
+<div>
+    <!-- Top image start -->
+    <div class="container-fluid main-image d-flex align-items-center" [ngStyle]="{ 'background-image': 'url(' + imagePath + ')'}">
+        <div class="my-bg-dark"></div>
+        <div style="width: 100%;">
+            <h1 class="main-top text-center m-0">Daj się zkodować... oczarować</h1>
+            
+        </div>
+    </div>
+    <!-- Top image end -->
+    <!-- Cards start -->
+    <div class="container" style="margin-top: -60px; margin-bottom: 20px;" >
+        <div class="">
+            <div class="row ">
+                <div class="col-md-6 pb-3">
+                    <div class="card" >
+                        <img class="card-img-top" [src]="imagePath" alt="Card image cap">
+                        <p class="text-muted m-0" style="padding-left: 1.25rem;">20/05/2021</p>
+                        <div class="card-body">
+                            <h5 class="card-title">Python</h5>
+                            <p class="card-text card-text-line">Czy potrzebny jest inny język niż python?</p>
+                        </div>
+                        <div class="card-body d-flex">
+                            <span>Czas czytania: 5 min</span>
+                            <a href="#" class="card-link ml-auto my-card-link">Czytaj dalej <fa-icon [icon]="iconArrow"></fa-icon></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 pb-3">
+                    <div class="card" >
+                        <img class="card-img-top" [src]="imagePath" alt="Card image cap">
+                        <p class="text-muted m-0" style="padding-left: 1.25rem;">20/05/2021</p>
+                        <div class="card-body">
+                            <h5 class="card-title">Python</h5>
+                            <p class="card-text card-text-line">Czy potrzebny jest inny język niż python?</p>
+                        </div>
+                        <div class="card-body d-flex">
+                            <span>Czas czytania: 5 min</span>
+                            <a href="#" class="card-link ml-auto my-card-link">Czytaj dalej <fa-icon [icon]="iconArrow"></fa-icon></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cards end -->
+</div>

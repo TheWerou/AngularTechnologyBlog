@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '',   redirectTo: '/MainView', pathMatch: 'full' },
   { path: 'MainView', component:  MainBlogComponent},
   { path: 'CategoryView/:productId', component:  CategoryViewComponent},
+  { path: 'CategoryView/:productId/:articleId', component:  ArticleViewComponent},
 ];
 
 @NgModule({
