@@ -1,55 +1,62 @@
 <div>
-    <div class="container-fluid no-padding">
-        <div class="container-fluid px-0">
-            <div class="row">
-                <div class="mw-100 container" style="width: 100%">
-                    <img class="images img-responsive mw-100" [src]="imagePath" class="img-fluid" alt="Responsive image"
-                        style="height: calc(100vh - 55.33px); width: 100%; object-fit: cover;" />
-                    <div class="left">Bottom Left</div>
-                    <div class="right">Bottom Right</div>
-                    <div class="centered">Centered</div>
+    <!-- Top image start -->
+    <div class="container-fluid main-image d-flex align-items-center" [ngStyle]="{ 'background-image': 'url(' + imagePath + ')'}">
+        <div class="my-bg-dark"></div>
+        <div style="width: 100%;">
+            <h1 class="main-top text-center m-0">Daj się zkodować... oczarować</h1>
+            <div class="row justify-content-between px-4" style="padding-bottom: 70px;">
+                <div class="col-lg-4 main-left">
+                    <ul class="list-unstyled h1 m-0 py-2">
+                        <li class="pb-2">Programowanie</li>
+                        <li class="pb-2">Newsy w branży</li>
+                        <li>Tutoriale</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 main-right">
+                    <ul class="list-unstyled h5 m-0 pt-2">
+                        <li class="pb-3">Witaj! Trafiłeś na mojego bloga gdzie opisuje swoje przygody oraz spostrzeżenia z branży IT.</li>
+                        <li class="pb-3">Jeśli tak jak ja programowanie to dla ciebie hobby to zapraszam do wspólnego poznawania branży.</li>
+                        <li>A jeśli jesteś początkujący to postaram ci się udowodnić, że to jest najlepsza praca pod słońcem... no dachem.</li>
+                    </ul>  
                 </div>
             </div>
         </div>
     </div>
+    <!-- Top image end -->
+    <!-- Cards start -->
     <div class="container" style="margin-top: -60px; margin-bottom: 20px;" >
         <div class="">
             <div class="row ">
-                <div class="col d-flex justify-content-center">
+                <div class="col-md-6 pb-3">
                     <div class="card" >
                         <img class="card-img-top" [src]="imagePath" alt="Card image cap">
+                        <p class="text-muted m-0" style="padding-left: 1.25rem;">20/05/2021</p>
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
+                            <h5 class="card-title">Python</h5>
+                            <p class="card-text card-text-line">Czy potrzebny jest inny język niż python?</p>
                         </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            
+                        <div class="card-body d-flex">
+                            <span>Czas czytania: 5 min</span>
+                            <a href="#" class="card-link ml-auto my-card-link">Czytaj dalej <fa-icon [icon]="iconArrow"></fa-icon></a>
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
+                <div class="col-md-6 pb-3">
                     <div class="card" >
                         <img class="card-img-top" [src]="imagePath" alt="Card image cap">
+                        <p class="text-muted m-0" style="padding-left: 1.25rem;">20/05/2021</p>
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
+                            <h5 class="card-title">Python</h5>
+                            <p class="card-text card-text-line">Czy potrzebny jest inny język niż python?</p>
                         </div>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            
+                        <div class="card-body d-flex">
+                            <span>Czas czytania: 5 min</span>
+                            <a href="#" class="card-link ml-auto my-card-link">Czytaj dalej <fa-icon [icon]="iconArrow"></fa-icon></a>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
-
     </div>
+    <!-- Cards end -->
 </div>

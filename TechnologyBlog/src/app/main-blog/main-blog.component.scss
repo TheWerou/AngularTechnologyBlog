@@ -1,58 +1,84 @@
-.container {
-    position: relative;
-    text-align: center;
-    color: white;
-    width: 100%;
-    padding: 0;
+.main-image{
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: calc(100vh - 56px);
+  background-position-x: left;
+  background-position-y: center;
+  color: white;
+  position: relative;
+}
+.main-top{
+  position: relative;
+  z-index: 1;
+  padding-bottom: 8rem;
+  font-size: 4rem;
+}
+.my-bg-dark{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+.main-left::after {
+  position: absolute;
+  content: '';
+  background-color: white;
+  height: 1px;
+  top: 0px; 
+  width: 60%;
+}
+.main-right::after {
+  position: absolute;
+  content: '';
+  background-color: white;
+  height: 1px;
+  top: 0px; 
+  right: 0px;
+  width: 60%;
+}
+.card{
+  color: black;
+}
+.card-img-top{
+  padding: 1.25rem 1.25rem 0rem 1.25rem;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.card-text-line{
+  position: relative;
+}
+.card-text-line::before{
+  position: absolute;
+  content: '';
+  background-color: black;
+  height: 1px;
+  top: -6px; 
+  width: 50%;
+}
+.my-card-link{
+  color: #343a40;
+}
+.my-card-link:hover{
+  color: #6c757d;
+}
+@media (max-width: 991px) {
+  .main-top{
+    padding-bottom: 3rem;
+    font-size: 2.5rem;
   }
-  
-  /* Bottom left text */
-  .bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
+  .main-left{
+    border-top: 1px solid white;
   }
-  
-  /* Top left text */
-  .top-left {
-    position: absolute;
-    top: 8px;
-    left: 16px;
+  .main-left::after {
+    display: none;
   }
-  
-  /* Top right text */
-  .top-right {
-    position: absolute;
-    top: 8px;
-    right: 16px;
+  .main-right{
+    border-top: 1px solid white;
   }
-  
-  /* Bottom right text */
-  .bottom-right {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
+  .main-right::after {
+    display: none;
   }
-  .right {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-  }
-
-  .left {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-  }
-  
-  /* Centered text */
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .card{
-    color: black;
-  }
+}

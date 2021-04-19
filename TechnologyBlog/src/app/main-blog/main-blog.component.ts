@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  {DataBaseService } from 'src/app/services/data-base.service';
 import { Section, Post, Category, User,MainSite } from 'src/app/shared/data/InterFaces/InterFaces';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-main-blog',
@@ -10,6 +11,8 @@ import { Section, Post, Category, User,MainSite } from 'src/app/shared/data/Inte
 export class MainBlogComponent implements OnInit {
   public imagePath: string
   constructor(private backend: DataBaseService) { }
+  iconArrow = faArrowRight;
+
   mainSite: MainSite;
 
   ngOnInit(): void {
