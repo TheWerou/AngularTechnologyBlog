@@ -34,11 +34,11 @@ export class DataBaseService {
     { id: 12, title: 'Dr Nice12', PostText: 'cos tam cos tam', },
   ];
   public Categorys: Category[] = [
-    { id: 1, title: 'Newsy', CategoryText: 'Co słychać w informatyce?', },
-    { id: 2, title: 'C#', CategoryText: 'C# .Net ASP.Net', },
-    { id: 3, title: 'Python', CategoryText: 'Python, Django, Sztuczna inteligencja', },
-    { id: 4, title: 'Ciekawostki', CategoryText: 'Ciekawe rzeczy, sztuczki, gadżety', },
-    { id: 5, title: 'Tutoriale', CategoryText: 'Porady, Tutoriale, Checklisty', },
+    { id: 1, title: 'Newsy', CategoryText: 'Co słychać w informatyce?', image: "assets/news_background.jpg"},
+    { id: 2, title: 'C#', CategoryText: 'C# .Net ASP.Net', image: "assets/net_background.png"},
+    { id: 3, title: 'Python', CategoryText: 'Python, Django, Sztuczna inteligencja', image: "assets/python_background.jpg"},
+    { id: 4, title: 'Ciekawostki', CategoryText: 'Ciekawe rzeczy, sztuczki, gadżety', image: "assets/interesting_backgorund.jpg"},
+    { id: 5, title: 'Tutoriale', CategoryText: 'Porady, Tutoriale, Checklisty', image: "assets/tutorial_background.jpg"},
   ];
   public Users: User[] = [
     { id: 1, Name: 'Adam', Pass: '123qwe', },

@@ -15,7 +15,7 @@ export interface Category {
   id: number;
   title: string;
   CategoryText: string;
-  image?: File
+  image?: string;
   Posts?: Post[];
 }
 export interface User {

@@ -21,13 +21,13 @@ export class CategoryViewComponent implements OnInit {
   id: number;
 
   ngOnInit(): void {
-    this.imagePath = "assets/placeholder.jpg";
     this.route.paramMap.subscribe((params: ParamMap) => { 
       this.id = +params.get("categoryId");
       this.list(); });
   }
   public list() {
     this.categorySite = this.backend.getOneCategory(this.id);
+    this.imagePath = this.categorySite.image;
   }
 
 }
