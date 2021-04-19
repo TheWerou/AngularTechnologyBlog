@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import  {DataBaseService } from 'src/app/services/data-base.service';
-import { Section, Post, Category, User,MainSite } from 'src/app/shared/data/InterFaces/InterFaces';
+import { DataBaseService } from 'src/app/services/data-base.service';
+import { Section, Post, Category, User, MainSite } from 'src/app/shared/data/InterFaces/InterFaces';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute, ParamMap } from "@angular/router";
 
 @Component({
   selector: 'app-category-view',
@@ -10,15 +11,23 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class CategoryViewComponent implements OnInit {
 
-  constructor(private backend: DataBaseService) { }
+  constructor(
+    private backend: DataBaseService,
+    private route: ActivatedRoute,) { }
+
   iconArrow = faArrowRight;
-  mainSite: MainSite;
+  categorySite: Category;
   public imagePath: string
+  id: number;
+
   ngOnInit(): void {
     this.imagePath = "assets/placeholder.jpg";
+    this.route.paramMap.subscribe((params: ParamMap) => { 
+      this.id = +params.get("categoryId");
+      this.list(); });
   }
-  public list(){
-   this.mainSite = this.backend.getMainSite();
+  public list() {
+    this.categorySite = this.backend.getOneCategory(this.id);
   }
 
 }

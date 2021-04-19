@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainBlogComponent } from './main-blog/main-blog.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
+import { AddArticleComponent } from './add-article/add-article.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/MainView', pathMatch: 'full' },
   { path: 'MainView', component:  MainBlogComponent},
-  { path: 'CategoryView/:productId', component:  CategoryViewComponent},
-  { path: 'CategoryView/:productId/:articleId', component:  ArticleViewComponent},
+  { path: 'CategoryView/:categoryId', component:  CategoryViewComponent},
+  { path: 'ArticleView/:articleId', component:  ArticleViewComponent},
+  { path: 'AddArticleView', component:  AddArticleComponent},
 ];
 
 @NgModule({

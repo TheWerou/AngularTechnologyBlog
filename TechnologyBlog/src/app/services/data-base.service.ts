@@ -34,11 +34,11 @@ export class DataBaseService {
     { id: 12, title: 'Dr Nice12', PostText: 'cos tam cos tam', },
   ];
   public Categorys: Category[] = [
-    { id: 1, title: 'Newsy', CategoryText: 'cos tam cos tam', },
-    { id: 2, title: 'C#', CategoryText: 'cos tam cos tam', },
-    { id: 3, title: 'Python', CategoryText: 'cos tam cos tam', },
-    { id: 4, title: 'Ciekawostki', CategoryText: 'cos tam cos tam', },
-    { id: 5, title: 'Tutoriale', CategoryText: 'cos tam cos tam', },
+    { id: 1, title: 'Newsy', CategoryText: 'Co słychać w informatyce?', },
+    { id: 2, title: 'C#', CategoryText: 'C# .Net ASP.Net', },
+    { id: 3, title: 'Python', CategoryText: 'Python, Django, Sztuczna inteligencja', },
+    { id: 4, title: 'Ciekawostki', CategoryText: 'Ciekawe rzeczy, sztuczki, gadżety', },
+    { id: 5, title: 'Tutoriale', CategoryText: 'Porady, Tutoriale, Checklisty', },
   ];
   public Users: User[] = [
     { id: 1, Name: 'Adam', Pass: '123qwe', },
@@ -64,6 +64,10 @@ export class DataBaseService {
   getCategory(): Category[]{
     return this.Categorys;
   }
+  getOneCategory(id:number): Category{
+    return this.Categorys.find(c => c.id === id);
+  }
+
   getMainSite(): MainSite
   {
     return this.MainSite;
