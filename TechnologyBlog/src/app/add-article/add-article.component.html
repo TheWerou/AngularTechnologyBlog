@@ -18,14 +18,31 @@
                                 </div>
                               </div>
                               <div class="form-group row align-items-center required">
-                                <label class="col-md-3 col-form-label asterisk">Kategoria postu</label>
+                                <label class="col-md-3 col-form-label asterisk">Projekt</label>
                                 <div class="col-md-5">
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    name="Category"
-                                    formControlName="Category"
-                                  />
+                                  <div ngbDropdown class="d-inline-block">
+                                    <button
+                                      class="btn "
+                                      id="dropdownSubAccounts"
+                                      ngbDropdownToggle
+                                    >
+                                      <span *ngIf="selectedCategory == null">Wybierz projekt</span>
+                                      <span *ngIf="selectedCategory != null">
+                                        {{
+                                            selectedCategory.title
+                                        }}
+                                      </span>
+                                    </button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownSubAccounts">
+                                      <button
+                                        class="dropdown-item"
+                                        *ngFor="let catitem of categoryList; index as i"
+                                        (click)="selectCategory(catitem)"
+                                      >
+                                        {{ catitem.title }}
+                                      </button>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                               <div class="form-group row align-items-center required">

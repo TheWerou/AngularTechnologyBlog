@@ -12,12 +12,15 @@ export class AddArticleComponent implements OnInit {
   newArticle: PostDto;
   newSection: Section[];
   formGrup: FormGroup;
+  categoryList: Category[];
+  selectedCategory: Category = null;
 
   constructor(public formBuilder: FormBuilder, private backend: DataBaseService) {
 
   }
 
   ngOnInit(): void {
+    this.catList();
     this.formGrup = this.formBuilder.group({
       title: new FormControl(),
       Category: new FormControl(),
@@ -25,10 +28,18 @@ export class AddArticleComponent implements OnInit {
       ReadTime: new FormControl(),
     });
   }
-
+  selectCategory(selected: Category): void {
+    this.selectedCategory = selected;
+    console.log(this.selectedCategory.id)
+  }
+  public catList()
+  {
+    this.categoryList = this.backend.getCategory();
+  }
   save() {
 
     let forms = this.formGrup.getRawValue() as PostDto;
+    forms.Category = this.selectedCategory;
     this.backend.createPost(forms);
   }
 

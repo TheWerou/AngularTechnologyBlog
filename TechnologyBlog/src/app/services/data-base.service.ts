@@ -59,11 +59,16 @@ export class DataBaseService {
   getPost(): Post[]{
     return this.Posts;
   }
+  getOnePost(id: number): Post{
+    return this.Posts.find(c => c.id === id);;
+  }
+
   createPost(postDto: PostDto): void {
     let newPost: Post = postDto as Post;
     newPost.id = this.Posts[this.Posts.length - 1].id + 1;
     newPost.date = Date.now().toString();
     this.Posts.push(newPost);
+    
   }
 
   getPostCategory(categortId:number): Post[]{
