@@ -11,12 +11,15 @@ import { faSearch, faUser, faPlus } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private backend: DataBaseService) { }
+  title = 'Angular Form Validation Tutorial';
+
   iconSearch = faSearch;
   iconUser = faUser;
   iconPlus = faPlus;
 
   categoryList: Category[];
+
+  constructor(private backend: DataBaseService) {}
 
   ngOnInit(): void {
     this.list();

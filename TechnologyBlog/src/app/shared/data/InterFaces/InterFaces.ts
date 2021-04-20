@@ -6,6 +6,7 @@ export interface Section {
 }
 export interface Post {
   id: number;
+  date: string;
   title: string;
   Category: Category;
   DescriptionText: string;
@@ -33,4 +34,13 @@ export interface MainSite {
   leftDescription: string;
   rightDescription: string;
   image?: File
+}
+export interface PostDto {
+  title: string;
+  Category: Category;
+  DescriptionText: string;
+  PostText: string;
+  ReadTime: number;
+  image?: File
+  Sections?: Section[];
 }

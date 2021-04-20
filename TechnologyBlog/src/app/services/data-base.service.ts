@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Section, Post, Category, User,MainSite } from 'src/app/shared/data/InterFaces/InterFaces';
+import { Section, Post, Category, User, MainSite, PostDto } from 'src/app/shared/data/InterFaces/InterFaces';
 
 @Injectable({
   providedIn: 'root'
@@ -28,18 +28,18 @@ export class DataBaseService {
     { id: 5, title: 'Tutoriale', CategoryText: 'Porady, Tutoriale, Checklisty', image: "assets/tutorial_background.jpg"},
   ];
   public Posts: Post[] = [
-    { id: 1, title: 'Coraz więcej ludzi programuje w HTML', Category: this.Categorys[0], ReadTime: 15 ,DescriptionText: 'Coraz więcej ludzi programuje w HTML', PostText: 'cos tam cos tam', },
-    { id: 2, title: 'Jak zrobić a się nie narobić?', Category: this.Categorys[4], ReadTime: 5 ,DescriptionText: 'Jak zrobić a się nie narobić?', PostText: 'cos tam cos tam', },
-    { id: 3, title: 'Entity frameworkk', Category: this.Categorys[1], ReadTime: 7 ,DescriptionText: 'Entity frameworkk', PostText: 'cos tam cos tam', },
-    { id: 4, title: 'Migracje w Django',Category: this.Categorys[2], ReadTime: 8 ,DescriptionText: 'Migracje w Django', PostText: 'cos tam cos tam', },
-    { id: 5, title: 'File table w Entity framework',Category: this.Categorys[1], ReadTime: 10 ,DescriptionText: 'File table w Entity framework', PostText: 'cos tam cos tam', },
-    { id: 6, title: 'GUI w PyQt',Category: this.Categorys[2], ReadTime: 12 ,DescriptionText: 'GUI w PyQt', PostText: 'cos tam cos tam', },
-    { id: 7, title: 'Sztuczna inteligencja w nowym iphonie',Category: this.Categorys[3], ReadTime: 11 ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
-    { id: 8, title: 'Aplikacja mobina w pythonie',Category: this.Categorys[2], ReadTime: 12 ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
-    { id: 9, title: 'Xamarin co i jak',Category: this.Categorys[1], ReadTime: 22 ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
-    { id: 10, title: 'Podstawowy kurs c++',Category: this.Categorys[4], ReadTime: 32 ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
-    { id: 11, title: 'Pojemniki na dane jak z nich korzystać i po co?',Category: this.Categorys[4], ReadTime: 12 ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
-    { id: 12, title: 'Elon musk wydaje smartfona',Category: this.Categorys[3], ReadTime: 12 ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
+    { id: 1, title: 'Coraz więcej ludzi programuje w HTML', Category: this.Categorys[0], ReadTime: 15 , date: '20/12/2021' ,DescriptionText: 'Coraz więcej ludzi programuje w HTML', PostText: 'cos tam cos tam', },
+    { id: 2, title: 'Jak zrobić a się nie narobić?', Category: this.Categorys[4], ReadTime: 5 , date: '02/08/2020' ,DescriptionText: 'Jak zrobić a się nie narobić?', PostText: 'cos tam cos tam', },
+    { id: 3, title: 'Entity frameworkk', Category: this.Categorys[1], ReadTime: 7 , date: '14/05/2019' ,DescriptionText: 'Entity frameworkk', PostText: 'cos tam cos tam', },
+    { id: 4, title: 'Migracje w Django',Category: this.Categorys[2], ReadTime: 8 , date: '25/01/2020' ,DescriptionText: 'Migracje w Django', PostText: 'cos tam cos tam', },
+    { id: 5, title: 'File table w Entity framework',Category: this.Categorys[1], ReadTime: 10 , date: '22/02/2021' ,DescriptionText: 'File table w Entity framework', PostText: 'cos tam cos tam', },
+    { id: 6, title: 'GUI w PyQt',Category: this.Categorys[2], ReadTime: 12 , date: '21/03/2020' ,DescriptionText: 'GUI w PyQt', PostText: 'cos tam cos tam', },
+    { id: 7, title: 'Sztuczna inteligencja w nowym iphonie',Category: this.Categorys[3], ReadTime: 11 , date: '21/03/2018' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
+    { id: 8, title: 'Aplikacja mobina w pythonie',Category: this.Categorys[2], ReadTime: 12 , date: '21/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
+    { id: 9, title: 'Xamarin co i jak',Category: this.Categorys[1], ReadTime: 22 , date: '22/05/2020' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
+    { id: 10, title: 'Podstawowy kurs c++',Category: this.Categorys[4], ReadTime: 32 , date: '17/06/2020' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
+    { id: 11, title: 'Pojemniki na dane jak z nich korzystać i po co?',Category: this.Categorys[4], ReadTime: 12 , date: '20/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
+    { id: 12, title: 'Elon musk wydaje smartfona',Category: this.Categorys[3], ReadTime: 12 , date: '24/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', },
   ];
   public Users: User[] = [
     { id: 1, Name: 'Adam', Pass: '123qwe', },
@@ -58,6 +58,12 @@ export class DataBaseService {
 
   getPost(): Post[]{
     return this.Posts;
+  }
+  createPost(postDto: PostDto): void {
+    let newPost: Post = postDto as Post;
+    newPost.id = this.Posts[this.Posts.length - 1].id + 1;
+    newPost.date = Date.now().toString();
+    this.Posts.push(newPost);
   }
 
   getPostCategory(categortId:number): Post[]{

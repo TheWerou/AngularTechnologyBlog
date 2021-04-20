@@ -1,1 +1,62 @@
-<p>add-article works!</p>
+<div>
+    <!-- Cards start -->
+    <div class="container" style="margin-top: 30px; margin-bottom: 20px;" >
+        <div class="">
+            <div class="row ">
+                <div class="col pb-3" >
+                    <div class="card" >
+                        <div [formGroup]="formGrup">
+                            <div class="form-group row align-items-center required">
+                                <label class="col-md-3 col-form-label asterisk">Tytuł postu</label>
+                                <div class="col-md-5">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="title"
+                                    formControlName="title"
+                                  />
+                                </div>
+                              </div>
+                              <div class="form-group row align-items-center required">
+                                <label class="col-md-3 col-form-label asterisk">Kategoria postu</label>
+                                <div class="col-md-5">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="Category"
+                                    formControlName="Category"
+                                  />
+                                </div>
+                              </div>
+                              <div class="form-group row align-items-center required">
+                                <label class="col-md-3 col-form-label asterisk">Text postu</label>
+                                <div class="col-md-5">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="PostText"
+                                    formControlName="PostText"
+                                  />
+                                </div>
+                              </div>
+                              <div class="form-group row align-items-center required">
+                                <label class="col-md-3 col-form-label asterisk">Czas czytania postu</label>
+                                <div class="col-md-5">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="ReadTime"
+                                    formControlName="ReadTime"
+                                  />
+                                </div>
+                              </div>
+                        </div>
+                        <button (click)="save()" type="submit">Zapisz</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Cards end -->
+</div>
