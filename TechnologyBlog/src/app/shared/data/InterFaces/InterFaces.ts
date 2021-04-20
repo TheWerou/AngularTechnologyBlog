@@ -7,7 +7,10 @@ export interface Section {
 export interface Post {
   id: number;
   title: string;
+  Category: Category;
+  DescriptionText: string;
   PostText: string;
+  ReadTime: number;
   image?: File
   Sections?: Section[];
 }
