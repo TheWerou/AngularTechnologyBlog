@@ -59,6 +59,10 @@ export class DataBaseService {
   getPost(): Post[]{
     return this.Posts;
   }
+
+  getPostCategory(categortId:number): Post[]{
+    return this.Posts.filter(d => d.Category.id === categortId)
+  }
   getUsers(): User[]{
     return this.Users;
   }

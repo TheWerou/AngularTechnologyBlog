@@ -19,15 +19,22 @@ export class CategoryViewComponent implements OnInit {
   categorySite: Category;
   public imagePath: string
   id: number;
+  posts: Post[];
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => { 
       this.id = +params.get("categoryId");
-      this.list(); });
+      this.list(); 
+      this.articleList();
+    });
   }
   public list() {
     this.categorySite = this.backend.getOneCategory(this.id);
     this.imagePath = this.categorySite.image;
+  }
+
+  public articleList() {
+    this.posts = this.backend.getPostCategory(this.id);
   }
 
 }
