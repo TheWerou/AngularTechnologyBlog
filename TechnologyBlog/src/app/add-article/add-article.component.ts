@@ -10,8 +10,10 @@ import { DataBaseService } from 'src/app/services/data-base.service';
 })
 export class AddArticleComponent implements OnInit {
   newArticle: PostDto;
-  newSection: Section[];
+  public newSection: Section[] = [];
+  sectionStatus: boolean = false;
   formGrup: FormGroup;
+  SectionGrup: FormGroup;
   categoryList: Category[];
   selectedCategory: Category = null;
 
@@ -27,6 +29,10 @@ export class AddArticleComponent implements OnInit {
       PostText: new FormControl(),
       ReadTime: new FormControl(),
     });
+    this.SectionGrup = this.formBuilder.group({
+      Sectiontitle: new FormControl(),
+      SectionText: new FormControl(),
+    });
   }
   selectCategory(selected: Category): void {
     this.selectedCategory = selected;
@@ -37,10 +43,21 @@ export class AddArticleComponent implements OnInit {
     this.categoryList = this.backend.getCategory();
   }
   save() {
-
     let forms = this.formGrup.getRawValue() as PostDto;
     forms.Category = this.selectedCategory;
     this.backend.createPost(forms);
+  }
+
+  addSection(){
+    let emptySection: Section;
+    this.sectionStatus = true;
+  }
+
+  saveSection(){
+    let sectionForms = this.SectionGrup.getRawValue() as Section;
+    this.newSection.push(sectionForms);
+    this.sectionStatus = false;
+    console.log(this.sectionStatus);
   }
 
 }
