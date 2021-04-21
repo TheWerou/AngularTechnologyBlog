@@ -9,7 +9,11 @@ export class ArticleViewComponent implements OnInit {
 
   constructor() { }
 
+  public imagePath: string
+
   ngOnInit(): void {
+    this.imagePath = "assets/placeholder.jpg";
+
   }
 
 }
