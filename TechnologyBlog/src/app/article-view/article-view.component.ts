@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataBaseService } from 'src/app/services/data-base.service';
+import { Section, Post, Category, User, MainSite } from 'src/app/shared/data/InterFaces/InterFaces';
+import { ActivatedRoute, ParamMap } from "@angular/router";
 
 @Component({
   selector: 'app-article-view',
@@ -7,13 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private backend: DataBaseService,
+    private route: ActivatedRoute,) { }
 
   public imagePath: string
+  id: number;
+  post: Post;
+
 
   ngOnInit(): void {
     this.imagePath = "assets/placeholder.jpg";
+    this.route.paramMap.subscribe((params: ParamMap) => { 
+      this.id = +params.get("articleId");
+      this.list(this.id);
+    });
 
+  }
+  public list(id: number) {
+    this.post = this.backend.getOnePost(id)
   }
 
 }

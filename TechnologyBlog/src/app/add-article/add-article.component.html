@@ -46,15 +46,37 @@
                 </div>
               </div>
             </div>
-            <hr> 
-             
-            <div *ngFor="let item of newSection">
-              <div>Tytuł <span> {{ item.title }} </span> </div> <br>
-              <div>Text <span> {{ item.SectionText }} </span> </div>
+            <hr>
+
+            <div *ngFor="let item of newSection; index as i">
+              <div *ngIf="!expandableRow[i]">
+                <div>Tytuł <span> {{ item.title }} </span> </div> <br>
+                <div>Text <span> {{ item.SectionText }} </span> </div>
+                <button (click)="editSectionButton(i)" type="submit">Edytuj</button>
+              </div>
+              
+              <div [formGroup]="SectionEditGrup" *ngIf="expandableRow[i] && editArticle">
+                <div class="form-group row align-items-center required">
+                  <label class="col-md-3 col-form-label asterisk">Tytuł sekcji</label>
+                  <div class="col-md-5">
+                    <input value="cos"  type="text" class="form-control" name="SectiontitleEdit" formControlName="SectiontitleEdit" />
+                  </div>
+                </div>
+                <div class="form-group row align-items-center required">
+                  <label class="col-md-3 col-form-label asterisk">Text sekcji</label>
+                  <div class="col-md-5">
+                    <input value="cos"  type="text" class="form-control" name="SectionTextEdit" formControlName="SectionTextEdit" />
+                  </div>
+                </div>
+                <button (click)="editSection(i)" type="submit">Zapisz Sekcje</button>
+              </div>
+
             </div>
 
-            <hr> 
-            <button (click)="addSection()" type="submit">Dodaj Sekcje</button>
+            <hr>
+            <button *ngIf="!sectionStatus" (click)="addSection()" type="submit">Dodaj Sekcje</button>
+            <button *ngIf="sectionStatus" (click)="sectionStatus = !sectionStatus" type="submit">Anuluj</button>
+
             <div [formGroup]="SectionGrup" *ngIf="sectionStatus">
               <div class="form-group row align-items-center required">
                 <label class="col-md-3 col-form-label asterisk">Tytuł sekcji</label>
@@ -70,11 +92,11 @@
               </div>
               <button (click)="saveSection()" type="submit">Zapisz Sekcje</button>
             </div>
+            
             <button (click)="save()" type="submit">Zapisz</button>
           </div>
         </div>
 
-        
       </div>
     </div>
   </div>
