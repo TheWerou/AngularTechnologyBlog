@@ -90,6 +90,19 @@
                   <input type="text" class="form-control" name="SectionText" formControlName="SectionText" />
                 </div>
               </div>
+              <div class="form-group row align-items-center required">
+                <label class="col-md-3 col-form-label asterisk">Zdjęcia sekcji</label>
+                <div class="col-md-5">
+                  <input #imageInput
+                    value="cos"
+                    class="form-control" 
+                    name="SectionTextEdit" 
+                    formControlName="SectionTextEdit"
+                    type="file"
+                    accept="image/*"
+                    > 
+                </div>
+              </div>
               <button (click)="saveSection()" type="submit">Zapisz Sekcje</button>
             </div>
             

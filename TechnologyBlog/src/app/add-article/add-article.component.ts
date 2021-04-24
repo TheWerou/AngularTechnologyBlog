@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Section, Post, Category, User, MainSite, PostDto } from 'src/app/shared/data/InterFaces/InterFaces';
 import { DataBaseService } from 'src/app/services/data-base.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-article',
@@ -19,8 +20,12 @@ export class AddArticleComponent implements OnInit {
   SectionEditGrup: FormGroup;
   categoryList: Category[];
   selectedCategory: Category = null;
+  public imagePath;
+  imgURL: any;
 
-  constructor(public formBuilder: FormBuilder, private backend: DataBaseService) {
+  constructor(public formBuilder: FormBuilder, 
+              private backend: DataBaseService,
+              public router: Router) {
 
   }
 
@@ -55,6 +60,7 @@ export class AddArticleComponent implements OnInit {
     forms.Category = this.selectedCategory;
     forms.Sections = this.newSection;
     this.backend.createPost(forms);
+    this.router.navigate(['CategoryView/', this.selectedCategory.id]);
   }
 
   addSection(){

@@ -11,10 +11,10 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#"><fa-icon [icon]="iconSearch"></fa-icon></a>
+              <a class="nav-link" (click)="searchPopUp()"><fa-icon [icon]="iconSearch"></fa-icon></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><fa-icon [icon]="iconUser"></fa-icon></a>
+                <a class="nav-link"  ><fa-icon [icon]="iconUser"></fa-icon></a>
             </li>
             <li class="nav-item" >
                 <a class="nav-link" [routerLink]="['AddArticleView/']"><fa-icon [icon]="iconPlus"></fa-icon></a>

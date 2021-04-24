@@ -12,6 +12,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FotterComponent } from './shared/fotter/fotter.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SortViewComponent } from './sort-view/sort-view.component';
+import { SearchPopupComponent } from './shared/nav-bar/search-popup/search-popup.component';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+
 
 
 @NgModule({
@@ -22,7 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ArticleViewComponent,
     AddArticleComponent,
     CategoryViewComponent,
-    FotterComponent
+    FotterComponent,
+    SortViewComponent,
+    SearchPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +36,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
