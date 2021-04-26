@@ -63,9 +63,10 @@ export class AddArticleComponent implements OnInit {
     forms.Category = this.selectedCategory;
     forms.Sections = this.newSection;
     forms.image = this.mainImg;
-    this.backend.createPost(forms);
+    let output = this.backend.createPost(forms);
+    console.log(this.mainImg);
     console.log(forms);
-    this.router.navigate(['CategoryView/', this.selectedCategory.id]);
+    this.router.navigate(['ArticleView/', output]);
   }
 
   addSection() {
@@ -134,6 +135,7 @@ export class AddArticleComponent implements OnInit {
       this.imgURL = reader.result as string;
     }
     reader.readAsDataURL(item.target.files[0])
+    
   }
 
 

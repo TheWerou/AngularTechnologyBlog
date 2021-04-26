@@ -26,7 +26,7 @@
         <div class="form-group">
           <legend class="col-form-label">Wybierz zdjęcie</legend>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" >
+            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" (change)="getMainImg($event)" >
             <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz">Wybierz zdjęcie</label>
           </div>
         </div>

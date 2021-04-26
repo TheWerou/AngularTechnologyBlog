@@ -1,11 +1,11 @@
 <!-- Top image start -->
 <div class="container-fluid main-image d-flex align-items-center"
-    [ngStyle]="{ 'background-image': 'url(' + imagePath + ')'}">
+    [ngStyle]="{ 'background-image': 'url(' + mainImgUrl + ')'}">
     <div class="my-bg-dark"></div>
     <div class="container-fluid">
-        <h4 class="main-text text-light m-0">Python</h4>
-        <h1 class="main-text text-white mtm pb-4 m-0">Czy potrzebny jest inny język niż python?</h1>
-        <h5 class="main-text text-light main-line pt-4 m-0">Czas czytania: 5 min</h5>
+        <h4 class="main-text text-light m-0"> {{post.Category.title}} </h4>
+        <h1 class="main-text text-white mtm pb-4 m-0"> {{post.title}} </h1>
+        <h5 class="main-text text-light main-line pt-4 m-0">Czas czytania: {{post.ReadTime}} min</h5>
     </div>
 </div>
 <!-- Top image end -->
@@ -13,13 +13,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 bg-light pt-2 mb-3" style="box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);">
-            <div *ngFor="let item of post.Sections">
+            <div *ngFor="let item of post.Sections; index as i">
                 <h1>{{item.title}}</h1>
                 <p>{{item.SectionText}}</p>
-                <div class="row" *ngIf="item.image == null">
+                <div class="row" *ngIf="item.image != null">
                     <div class="col-md-6">
-                        <img class="img-thumbnail my-1" [src]="imagePath">
+                        <img class="img-thumbnail my-1" [src]="imgsUrls[i]">
                     </div>
+                </div>
+                <div class="row" *ngIf="item.image == null">
                     <div class="col-md-6">
                         <img class="img-thumbnail my-1" [src]="imagePath">
                     </div>

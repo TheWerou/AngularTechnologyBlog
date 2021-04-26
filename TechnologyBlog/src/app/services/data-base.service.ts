@@ -54,19 +54,22 @@ export class DataBaseService {
   getPost(): Post[]{
     return this.Posts;
   }
+
   getOnePost(id: number): Post{
-    return this.Posts.find(c => c.id == id);;
+    return this.Posts.find(c => c.id == id);
   }
 
-  createPost(postDto: PostDto): void {
+  createPost(postDto: PostDto): number {
     let newPost: Post = postDto as Post;
     newPost.id = this.Posts[this.Posts.length - 1].id + 1;
     newPost.date = Date.now().toString();
     this.Posts.push(newPost);
+    console.log(postDto.image);
+    console.log(newPost.image);
     newPost.Sections.forEach(element => {
       this.createSection(element);
     });
-    console.log(this.Sections.length);
+    return newPost.id; 
   }
 
   createSection(section: Section)
@@ -76,7 +79,7 @@ export class DataBaseService {
   }
 
   getPostCategory(categortId:number): Post[]{
-    return this.Posts.filter(d => d.Category.id == categortId)
+    return this.Posts.filter(d => d.Category.id == categortId);
   }
   getUsers(): User[]{
     return this.Users;

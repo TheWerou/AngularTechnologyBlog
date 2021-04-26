@@ -13,16 +13,17 @@
         <div class="">
             <div class="row ">
 
-                <div class="col-md-6 pb-3" *ngFor="let post of posts">
+                <div class="col-md-6 pb-3" *ngFor="let post of posts; index as i">
                     <div class="card" style="box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);">
-                        <img class="card-img-top" [src]="imagePath" alt="Card image cap">
+                        <img class="card-img-top" *ngIf="post.image == null" [src]="imagePath" alt="Card image cap">
+                        <img class="card-img-top" *ngIf="post.image != null" [src]="imgsUrls[i]" alt="Card image cap">
                         <p class="text-muted m-0" style="padding-left: 1.25rem;"> {{ post.date }} </p>
                         <div class="card-body">
                             <h5 class="card-title">{{post.Category.title}}</h5>
                             <p class="card-text card-text-line">{{post.title}}</p>
                         </div>
                         <div class="card-body d-flex">
-                            <span>Czas czytania: {{post.ReadTime}}</span>
+                            <span>Czas czytania: {{post.ReadTime}} min </span>
                             <a [routerLink]="['/ArticleView/', post.id]" class="card-link ml-auto my-card-link">Czytaj dalej <fa-icon [icon]="iconArrow"></fa-icon></a>
                         </div>
                     </div>
