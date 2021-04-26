@@ -55,7 +55,7 @@ export class DataBaseService {
     return this.Posts;
   }
   getOnePost(id: number): Post{
-    return this.Posts.find(c => c.id === id);;
+    return this.Posts.find(c => c.id == id);;
   }
 
   createPost(postDto: PostDto): void {
@@ -76,7 +76,7 @@ export class DataBaseService {
   }
 
   getPostCategory(categortId:number): Post[]{
-    return this.Posts.filter(d => d.Category.id === categortId)
+    return this.Posts.filter(d => d.Category.id == categortId)
   }
   getUsers(): User[]{
     return this.Users;
@@ -85,7 +85,7 @@ export class DataBaseService {
     return this.Categorys;
   }
   getOneCategory(id:number): Category{
-    return this.Categorys.find(c => c.id === id);
+    return this.Categorys.find(c => c.id == id);
   }
 
   getMainSite(): MainSite

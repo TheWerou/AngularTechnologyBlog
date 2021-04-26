@@ -47,8 +47,9 @@ export class AddArticleComponent implements OnInit {
     });
   }
 
-  selectCategory(selected: Category): void {
-    this.selectedCategory = selected;
+  selectCategory(selected: number): void {
+    this.selectedCategory = this.backend.getOneCategory(selected);
+    console.log(selected);
     console.log(this.selectedCategory.id)
   }
   public catList()
