@@ -22,10 +22,13 @@ export class AddArticleComponent implements OnInit {
   selectedCategory: Category = null;
   public imagePath;
   imgURL: any;
+  mainImg: File;
+  sectionImg: File;
+  editImg: File;
 
-  constructor(public formBuilder: FormBuilder, 
-              private backend: DataBaseService,
-              public router: Router) {
+  constructor(public formBuilder: FormBuilder,
+    private backend: DataBaseService,
+    public router: Router) {
 
   }
 
@@ -52,51 +55,86 @@ export class AddArticleComponent implements OnInit {
     console.log(selected);
     console.log(this.selectedCategory.id)
   }
-  public catList()
-  {
+  public catList() {
     this.categoryList = this.backend.getCategory();
   }
   save() {
     let forms = this.formGrup.getRawValue() as PostDto;
     forms.Category = this.selectedCategory;
     forms.Sections = this.newSection;
+    forms.image = this.mainImg;
     this.backend.createPost(forms);
+    console.log(forms);
     this.router.navigate(['CategoryView/', this.selectedCategory.id]);
   }
 
-  addSection(){
+  addSection() {
     this.sectionStatus = true;
   }
 
-  editSectionButton(index: number)
-  {
+  editSectionButton(index: number) {
     this.expandableRow = this.newSection.map((v) => false);
     this.expandableRow[index] = true;
     this.editArticle = true;
 
   }
 
-  editSection(index: number)
-  {
+  editSection(index: number) {
     let sectionEditForms = this.SectionEditGrup.getRawValue() as Section;
     sectionEditForms.SectionText = this.SectionEditGrup.getRawValue()["SectionTextEdit"];
-    sectionEditForms.title =  this.SectionEditGrup.getRawValue()["SectiontitleEdit"];
+    sectionEditForms.title = this.SectionEditGrup.getRawValue()["SectiontitleEdit"];
+    sectionEditForms.image = this.editImg;
     this.newSection[index] = sectionEditForms;
-    
+
     this.editArticle = false;
     this.expandableRow = this.newSection.map((v) => false);
   }
 
-  saveSection(){
+  saveSection() {
     let sectionForms = this.SectionGrup.getRawValue() as Section;
-    sectionForms.title =  this.SectionGrup.getRawValue()["Sectiontitle"];
-    this.newSection.push(sectionForms);
+    sectionForms.title = this.SectionGrup.getRawValue()["Sectiontitle"];
+    sectionForms.image = this.sectionImg;
     
+    this.newSection.push(sectionForms);
+    console.log(sectionForms);
     this.sectionStatus = false;
     this.expandableRow = this.newSection.map((v) => false);
     this.SectionGrup.reset();
-    
+
   }
-  
+
+  getSectionImg(item: any)
+  {
+    if(item.target.files.length > 0) 
+    {
+      this.sectionImg = item.target.files[0];
+    }
+  }
+
+  getMainImg(item: any)
+  {
+    if(item.target.files.length > 0) 
+    {
+      this.mainImg = item.target.files[0];
+    }
+  }
+
+  getEditImg(item: any)
+  {
+    if(item.target.files.length > 0) 
+    {
+      this.editImg = item.target.files[0];
+    }
+  }
+
+  showFile(item: any)
+  {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imgURL = reader.result as string;
+    }
+    reader.readAsDataURL(item.target.files[0])
+  }
+
 
 }

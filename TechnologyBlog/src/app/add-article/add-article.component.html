@@ -23,6 +23,13 @@
           <label for="inputPostTime">Czas czytania postu</label>
           <input type="text" class="form-control" id="inputPostTime" placeholder="Czas czytania postu" formControlName="ReadTime">
         </div>
+        <div class="form-group">
+          <legend class="col-form-label">Wybierz zdjęcie</legend>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" >
+            <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz">Wybierz zdjęcie</label>
+          </div>
+        </div>
       </div>
       <!-- Dodane sekcje -->
       <legend class="col-form-label">Dodane sekcje</legend>
@@ -63,7 +70,7 @@
         <div class="form-group">
           <legend class="col-form-label">Wybierz zdjęcie</legend>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1">
+            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" (change)="getSectionImg($event);">
             <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz">Wybierz zdjęcie</label>
           </div>
         </div>
@@ -75,118 +82,7 @@
   </div>
 </section>
 
-<!-- <div>
-  <div class="container" style="margin-top: 30px; margin-bottom: 20px;">
-    <div class="">
-      <div class="row ">
-        <div class="col pb-3">
-          <div class="card">
-            <div [formGroup]="formGrup">
-              <div class="form-group row align-items-center required">
-                <label class="col-md-3 col-form-label asterisk">Tytuł postu</label>
-                <div class="col-md-5">
-                  <input type="text" class="form-control" name="title" formControlName="title" />
-                </div>
-              </div>
-              <div class="form-group row align-items-center required">
-                <label class="col-md-3 col-form-label asterisk">Projekt</label>
-                <div class="col-md-5">
-                  <div ngbDropdown class="d-inline-block">
-                    <button class="btn " id="dropdownSubAccounts" ngbDropdownToggle>
-                      <span *ngIf="selectedCategory == null">Wybierz projekt</span>
-                      <span *ngIf="selectedCategory != null">
-                        {{
-                        selectedCategory.title
-                        }}
-                      </span>
-                    </button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownSubAccounts">
-                      <button class="dropdown-item" *ngFor="let catitem of categoryList; index as i"
-                        (click)="selectCategory(catitem)">
-                        {{ catitem.title }}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group row align-items-center required">
-                <label class="col-md-3 col-form-label asterisk">Text postu</label>
-                <div class="col-md-5">
-                  <input type="text" class="form-control" name="PostText" formControlName="PostText" />
-                </div>
-              </div>
-              <div class="form-group row align-items-center required">
-                <label class="col-md-3 col-form-label asterisk">Czas czytania postu</label>
-                <div class="col-md-5">
-                  <input type="text" class="form-control" name="ReadTime" formControlName="ReadTime" />
-                </div>
-              </div>
-            </div>
-            <hr>
 
-            <div *ngFor="let item of newSection; index as i">
-              <div *ngIf="!expandableRow[i]">
-                <div>Tytuł <span> {{ item.title }} </span> </div> <br>
-                <div>Text <span> {{ item.SectionText }} </span> </div>
-                <button (click)="editSectionButton(i)" type="submit">Edytuj</button>
-              </div>
-              
-              <div [formGroup]="SectionEditGrup" *ngIf="expandableRow[i] && editArticle">
-                <div class="form-group row align-items-center required">
-                  <label class="col-md-3 col-form-label asterisk">Tytuł sekcji</label>
-                  <div class="col-md-5">
-                    <input value="cos"  type="text" class="form-control" name="SectiontitleEdit" formControlName="SectiontitleEdit" />
-                  </div>
-                </div>
-                <div class="form-group row align-items-center required">
-                  <label class="col-md-3 col-form-label asterisk">Text sekcji</label>
-                  <div class="col-md-5">
-                    <input value="cos"  type="text" class="form-control" name="SectionTextEdit" formControlName="SectionTextEdit" />
-                  </div>
-                </div>
-                <button (click)="editSection(i)" type="submit">Zapisz Sekcje</button>
-              </div>
-
-            </div>
-
-            <hr>
-            <button *ngIf="!sectionStatus" (click)="addSection()" type="submit">Dodaj Sekcje</button>
-            <button *ngIf="sectionStatus" (click)="sectionStatus = !sectionStatus" type="submit">Anuluj</button>
-
-            <div [formGroup]="SectionGrup" *ngIf="sectionStatus">
-              <div class="form-group row align-items-center required">
-                <label class="col-md-3 col-form-label asterisk">Tytuł sekcji</label>
-                <div class="col-md-5">
-                  <input type="text" class="form-control" name="Sectiontitle" formControlName="Sectiontitle" />
-                </div>
-              </div>
-              <div class="form-group row align-items-center required">
-                <label class="col-md-3 col-form-label asterisk">Text sekcji</label>
-                <div class="col-md-5">
-                  <input type="text" class="form-control" name="SectionText" formControlName="SectionText" />
-                </div>
-              </div>
-              <div class="form-group row align-items-center required">
-                <label class="col-md-3 col-form-label asterisk">Zdjęcia sekcji</label>
-                <div class="col-md-5">
-                  <input #imageInput
-                    value="cos"
-                    class="form-control" 
-                    name="SectionTextEdit" 
-                    formControlName="SectionTextEdit"
-                    type="file"
-                    accept="image/*"
-                    > 
-                </div>
-              </div>
-              <button (click)="saveSection()" type="submit">Zapisz Sekcje</button>
-            </div>
-            
-            <button (click)="save()" type="submit">Zapisz</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div> -->
+  <!-- Cards start -->
+  
+  
