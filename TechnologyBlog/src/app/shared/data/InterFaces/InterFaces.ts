@@ -46,3 +46,11 @@ export interface PostDto {
   image?: File
   Sections?: Section[];
 }
+export interface SearchDto {
+  amountPhoto: string,
+  minTime: string,
+  maxTime: string,
+  searchText: string,
+  date: Date;
+  Category: Category;
+}

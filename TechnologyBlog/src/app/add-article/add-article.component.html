@@ -42,7 +42,8 @@
             <dt class="col-sm-1">Tekst</dt>
             <dd class="col-sm-11">{{ item.SectionText }}</dd>
           </dl>
-          <button type="button" (click)="editSectionButton(i)" class="btn btn-dark">Edytuj</button>
+          <button type="button" (click)="editSectionButton(i)" class="btn btn-dark mr-2">Edytuj</button>
+          <button type="button"  class="btn btn-dark">Usuń</button>
         </div>
         <div [formGroup]="SectionEditGrup" *ngIf="expandableRow[i] && editArticle">
           <div class="form-group">

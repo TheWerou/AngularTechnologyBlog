@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { Section, Post, Category, User, MainSite, PostDto } from 'src/app/shared/data/InterFaces/InterFaces';
+import { Section, Post, Category, User, MainSite, PostDto, SearchDto } from 'src/app/shared/data/InterFaces/InterFaces';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +58,40 @@ export class DataBaseService {
 
   getOnePost(id: number): Post{
     return this.Posts.find(c => c.id == id);
+  }
+
+  search(dto: SearchDto)
+  {
+    console.log(this.searchInPostTitle(dto.searchText));
+    console.log(this.searchTime(dto));
+    console.log(this.searchCategory(dto));
+  }
+
+  searchCategory(dto: SearchDto)
+  {
+    return this.Posts.filter(c => c.Category == dto.Category);
+  }
+
+  searchTime(dto: SearchDto){
+    if(dto.minTime != null && dto.maxTime != null)
+    {
+      return this.Posts.filter(c => c.ReadTime >= Number(dto.minTime) && c.ReadTime <= Number(dto.maxTime));
+    }
+    else if (dto.maxTime == null)
+    {
+      return this.Posts.filter(c => c.ReadTime >= Number(dto.minTime));
+    }
+    else if (dto.minTime == null){
+      return this.Posts.filter(c => c.ReadTime <= Number(dto.maxTime));
+    }
+    else{
+      return null;
+    }
+  }
+
+  searchInPostTitle(textToFind: string)
+  {
+    return this.Posts.filter(c=> c.title.includes(textToFind));
   }
 
   createPost(postDto: PostDto): number {

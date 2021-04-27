@@ -1,1 +1,29 @@
-<p>search-popup works!</p>
+<div [formGroup]="formGrup">
+    <div>
+        <h1>Wyszukiwanie</h1>
+    </div>
+    <hr>
+    <div>
+        <div class="form-group">
+            <label for="inputProject">Projekt</label>
+            <select id="inputProject" class="form-control" (change)="dropDownHandler($event.target.value)">
+                <option *ngFor="let item of categorys; index as i" [value]="i"> {{item.title}} </option>
+            </select>
+        </div>
+        <label for="data">Data</label>
+        <input type="date" id="data" placeholder="Tytuł postu" >
+    </div>
+    <div class="form-group">
+        <label for="mintime">Minimalny czas</label>
+        <input type="text" id="mintime" placeholder="Tytuł postu" formControlName="minTime">
+    </div>
+    <div class="form-group">
+        <label for="maxtime">Maksymalny czas</label>
+        <input type="text" id="maxtime" placeholder="Tytuł postu" formControlName="maxTime">
+    </div>
+    <div class="form-group">
+        <label for="texttofind">Wyszukaj </label>
+        <input type="text" id="texttofind" placeholder="Tytuł postu" formControlName="searchText">
+    </div>
+    <button type="button" class="btn btn-dark btn-block mb-2" (click)="search()">Wyszukaj</button>
+</div>
