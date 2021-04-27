@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Section, Post, Category, User, MainSite, PostDto } from 'src/app/shared/data/InterFaces/InterFaces';
 
@@ -62,7 +63,18 @@ export class DataBaseService {
   createPost(postDto: PostDto): number {
     let newPost: Post = postDto as Post;
     newPost.id = this.Posts[this.Posts.length - 1].id + 1;
-    newPost.date = Date.now().toString();
+    newPost.date = formatDate(new Date(), 'dd/MM/yyyy', 'en');
+    
+    let sectionReader = new FileReader();
+
+    sectionReader.onload = () => {
+      newPost.imagePath = sectionReader.result as string; 
+    };
+
+    if(newPost.image != null)
+    {
+      sectionReader.readAsDataURL(newPost.image);
+    }
     this.Posts.push(newPost);
     console.log(postDto.image);
     console.log(newPost.image);
@@ -75,7 +87,19 @@ export class DataBaseService {
   createSection(section: Section)
   {
     section.id = this.Sections[this.Sections.length - 1].id + 1;
+    
+      let sectionReader = new FileReader();
+      sectionReader.onload = () => {
+        section.imagePath = sectionReader.result as string; 
+      };
+
+      if(section.image != null)
+      {
+        sectionReader.readAsDataURL(section.image);
+      }
+        
     this.Sections.push(section);
+
   }
 
   getPostCategory(categortId:number): Post[]{

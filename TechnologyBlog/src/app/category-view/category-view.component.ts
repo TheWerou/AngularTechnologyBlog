@@ -38,29 +38,7 @@ export class CategoryViewComponent implements OnInit {
 
   public articleList() {
     this.posts = this.backend.getPostCategory(this.id).reverse();
-    this.showSectionFile(this.posts);
+    ;
   }
-
-
-  showSectionFile(item: Post[])
-  {
-    
-    item.forEach(c => {
-      let sectionReader = new FileReader();
-      sectionReader.onload = () => {
-        this.imgsUrls.push( sectionReader.result as string); 
-      };
-      if(c.image != null)
-      {
-        sectionReader.readAsDataURL(c.image);
-      }
-      else{
-        this.imgsUrls.push("");
-      }
-        
-    });
-    console.log(this.imgsUrls);
-  }
-  
 
 }

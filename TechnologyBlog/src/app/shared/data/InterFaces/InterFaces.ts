@@ -3,6 +3,7 @@ export interface Section {
   title: string;
   SectionText: string;
   image?: File
+  imagePath?: string;
 }
 export interface Post {
   id: number;
@@ -13,6 +14,7 @@ export interface Post {
   PostText: string;
   ReadTime: number;
   image?: File
+  imagePath?: string
   Sections?: Section[];
 }
 export interface Category {

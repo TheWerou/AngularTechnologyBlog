@@ -29,7 +29,7 @@ export class MainBlogComponent implements OnInit {
   }
 
   public articleList() {
-    this.posts = this.backend.getPost();
+    this.posts = this.backend.getPost().reverse();
   }
 
   

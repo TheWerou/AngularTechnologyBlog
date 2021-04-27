@@ -1,6 +1,6 @@
 <!-- Top image start -->
 <div class="container-fluid main-image d-flex align-items-center"
-    [ngStyle]="{ 'background-image': 'url(' + mainImgUrl + ')'}">
+    [ngStyle]="{ 'background-image': 'url(' + post.imagePath + ')'}">
     <div class="my-bg-dark"></div>
     <div class="container-fluid">
         <h4 class="main-text text-light m-0"> {{post.Category.title}} </h4>
@@ -18,7 +18,7 @@
                 <p>{{item.SectionText}}</p>
                 <div class="row" *ngIf="item.image != null">
                     <div class="col-md-6">
-                        <img class="img-thumbnail my-1" [src]="imgsUrls[i]">
+                        <img class="img-thumbnail my-1" [src]="item.imagePath">
                     </div>
                 </div>
                 <div class="row" *ngIf="item.image == null">
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="text-muted mb-2">20/05/2021</div>
+            <div class="text-muted mb-2"> {{post.date}} </div>
         </div>
         <div class="col-md-4 d-none d-md-block pt-2">
             <div class="text-center py-3 border-top border-secondary font-weight-bold">Zobacz inne artykuły</div>
