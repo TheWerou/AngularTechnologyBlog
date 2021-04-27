@@ -30,8 +30,8 @@
                 
                 <div class="col-md-6 pb-3" *ngFor="let post of posts">
                     <div class="card " style="box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);">
-                        <img class="card-img-top" *ngIf="post.image == null" [src]="imagePath" alt="Card image cap">
-                        <img class="card-img-top" *ngIf="post.image != null" [src]="post.imagePath" alt="Card image cap">
+                        <div class="card-img-top-my" *ngIf="post.image == null" [ngStyle]="{ 'background-image': 'url(' + imagePath + ')'}"></div>
+                        <div class="card-img-top-my" *ngIf="post.image != null" [ngStyle]="{ 'background-image': 'url(' + post.imagePath + ')'}"></div>
                         <p class="text-muted m-0" style="padding-left: 1.25rem;"> {{ post.date }}</p>
                         <div class="card-body">
                             <h5 class="card-title">{{post.Category.title}}</h5>

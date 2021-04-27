@@ -42,10 +42,16 @@
   .card{
     color: black;
   }
-  .card-img-top{
-    padding: 1.25rem 1.25rem 0rem 1.25rem;
+  .card-img-top-my{
+    margin: 1.25rem 1.25rem 0rem 1.25rem;
+    width: auto;
+    height: 300px;
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100% auto;
   }
   .card-text-line{
     position: relative;
