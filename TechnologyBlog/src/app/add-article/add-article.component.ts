@@ -32,14 +32,20 @@ export class AddArticleComponent implements OnInit {
     public router: Router) {
 
   }
+  Validators = {
+    required: "Wirka jest wymagana",
+    minlength: "Wirka nie może mieć mniej niż 1 cyfrę",
+    maxlength: "Wirka nie może mieć więcej niż 10 cyfr",
+    pattern: "Wirka nie może składać się z liter",
+  };
 
   ngOnInit(): void {
     this.catList();
     this.formGrup = this.formBuilder.group({
-      title: new FormControl(),
-      Category: new FormControl(),
-      PostText: new FormControl(),
-      ReadTime: new FormControl(),
+      title: new FormControl("",[Validators.required]),
+      Category: new FormControl("",[Validators.required]),
+      PostText: new FormControl("",[Validators.required]),
+      ReadTime: new FormControl("",[Validators.required]),
     });
     this.SectionGrup = this.formBuilder.group({
       Sectiontitle: new FormControl(),

@@ -38,7 +38,6 @@ export class CategoryViewComponent implements OnInit {
 
   public articleList() {
     this.posts = this.backend.getPostCategory(this.id).reverse();
-    ;
   }
 
 }
