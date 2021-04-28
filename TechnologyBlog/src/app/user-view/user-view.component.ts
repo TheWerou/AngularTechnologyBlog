@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataBaseService } from '../services/data-base.service';
 
 @Component({
@@ -8,9 +10,24 @@ import { DataBaseService } from '../services/data-base.service';
 })
 export class UserViewComponent implements OnInit {
 
-  constructor(private backend: DataBaseService) { }
+  constructor(public formBuilder: FormBuilder,private backend: DataBaseService,
+    public router: Router) { }
 
+    formGrup: FormGroup;    
   ngOnInit(): void {
+    this.formGrup = this.formBuilder.group({
+      login: new FormControl(""),
+      pass: new FormControl(""),
+    });
+  }
+
+  tryLogin()
+  {
+    let login = this.formGrup.getRawValue()["login"];
+    let pass = this.formGrup.getRawValue()["pass"];
+    sessionStorage.setItem("User", login);
+    sessionStorage.setItem("Pass", pass);
+    this.router.navigate(['AddArticleView']);
   }
 
   logOut()
