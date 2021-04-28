@@ -7,13 +7,14 @@ import { CategoryViewComponent } from './category-view/category-view.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { SortViewComponent } from './sort-view/sort-view.component';
 import { LoginViewComponent } from './login-view/login-view.component';
+import { LoginAuthGuard } from './shared/Auth/login-auth.guard';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/MainView', pathMatch: 'full' },
   { path: 'MainView', component:  MainBlogComponent},
   { path: 'CategoryView/:categoryId', component:  CategoryViewComponent},
   { path: 'ArticleView/:articleId', component:  ArticleViewComponent},
-  { path: 'AddArticleView', component:  AddArticleComponent},
+  { path: 'AddArticleView', component:  AddArticleComponent, canActivate: [LoginAuthGuard]},
   { path: 'SearchResoult', component:  SortViewComponent},
   { path: 'Auth/Login',  component: LoginViewComponent },
   { path: '**',  redirectTo: '/MainView' },

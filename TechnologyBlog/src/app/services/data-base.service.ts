@@ -1,6 +1,8 @@
 import { formatDate } from '@angular/common';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter,OnInit } from '@angular/core';
 import { Section, Post, Category, User, MainSite, PostDto, SearchDto } from 'src/app/shared/data/InterFaces/InterFaces';
+import { from, Observable, Subject } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +48,41 @@ export class DataBaseService {
   ];
   public MainSite: MainSite = { id: 1, title: 'Newsy', leftDescription: 'cos tam cos tam', rightDescription: 'cos tam cos tam' };
 
-  constructor() { }
+  constructor() { 
+    this.logedstatus.subscribe((value) => {
+      this.iSLoged = value
+  });
+  }
+  iSLoged: boolean = false;
+  logedstatus: Subject<boolean> = new Subject<boolean>();
+ 
+  ngOnInit(): void {
+    
+  }
+
+  changeIsLogedValue(value: boolean) {
+    this.logedstatus.next(value);
+}
+
+  isValid():boolean
+  {
+    if (sessionStorage.getItem('User') != null && sessionStorage.getItem('Pass') != null) {
+      if (sessionStorage.getItem('User') == "wojtus" && sessionStorage.getItem('Pass') == "123qwe") {
+        this.changeIsLogedValue(true);
+        return true;
+      }
+      return false;
+    }
+    else {
+      return false;
+    }
+  }
+
+  logOut()
+  {
+    this.changeIsLogedValue(false);
+    sessionStorage.clear();
+  }
 
   getSection(): Section[]{
     return this.Sections;

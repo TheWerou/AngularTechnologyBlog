@@ -16,6 +16,7 @@ import { SortViewComponent } from './sort-view/sort-view.component';
 import { SearchPopupComponent } from './shared/nav-bar/search-popup/search-popup.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { LoginViewComponent } from './login-view/login-view.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 
 
@@ -30,7 +31,8 @@ import { LoginViewComponent } from './login-view/login-view.component';
     FotterComponent,
     SortViewComponent,
     SearchPopupComponent,
-    LoginViewComponent
+    LoginViewComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,
