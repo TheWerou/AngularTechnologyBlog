@@ -6,6 +6,7 @@ import { ArticleViewComponent } from './article-view/article-view.component';
 import { CategoryViewComponent } from './category-view/category-view.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { SortViewComponent } from './sort-view/sort-view.component';
+import { LoginViewComponent } from './login-view/login-view.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/MainView', pathMatch: 'full' },
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: 'ArticleView/:articleId', component:  ArticleViewComponent},
   { path: 'AddArticleView', component:  AddArticleComponent},
   { path: 'SearchResoult', component:  SortViewComponent},
+  { path: 'Auth/Login',  component: LoginViewComponent },
+  { path: '**',  redirectTo: '/MainView' },
 ];
 
 @NgModule({

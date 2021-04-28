@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SortViewComponent } from './sort-view/sort-view.component';
 import { SearchPopupComponent } from './shared/nav-bar/search-popup/search-popup.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { LoginViewComponent } from './login-view/login-view.component';
 
 
 
@@ -28,7 +29,8 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
     CategoryViewComponent,
     FotterComponent,
     SortViewComponent,
-    SearchPopupComponent
+    SearchPopupComponent,
+    LoginViewComponent
   ],
   imports: [
     BrowserModule,
