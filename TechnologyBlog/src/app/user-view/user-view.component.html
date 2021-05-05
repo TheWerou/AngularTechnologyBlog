@@ -1,4 +1,4 @@
-<div [formGroup]="formGrup">
+<div *ngIf="!isLoged" [formGroup]="formGrup">
     <div class="form-group">
         <label for="inputPostTitle">Login</label>
         <input type="text" class="form-control" id="inputPostTitle" placeholder="Tytuł postu" formControlName="login">
@@ -9,6 +9,12 @@
       </div>
       <button type="submit" (click)="tryLogin()" class="btn btn-dark">Dodaj post</button>
 </div>
+<div *ngIf="isLoged">
+  <h1>Panel użytkownika</h1>
+  <button> Zmien haslo</button> 
+  <button> Zmien email </button> 
+  <button (click)="logOut()"> Log out </button>
+</div>
 
-<button (click)="logOut()"> Log out </button>
-<button routerLink="Auth/Login"> Log in </button>
+
+

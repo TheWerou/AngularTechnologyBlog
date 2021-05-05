@@ -28,6 +28,8 @@ export class SearchPopupComponent implements OnInit {
       searchText: new FormControl(),
       date: new FormControl(),
     });
+
+    
   }
 
   list()

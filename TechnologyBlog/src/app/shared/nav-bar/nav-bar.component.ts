@@ -39,7 +39,9 @@ export class NavBarComponent implements OnInit, OnChanges {
     let addOrderDialog: BsModalRef;
     addOrderDialog = this._modalService.show(UserViewComponent, {
       class: "modal-lg",
-      initialState: {},
+      initialState: {
+        isLoged: this.isLoged,
+      },
     });
   }
 

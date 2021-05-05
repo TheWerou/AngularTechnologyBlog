@@ -12,12 +12,18 @@ export class UserViewComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,private backend: DataBaseService,
     public router: Router) { }
+    formGrup: FormGroup;   
+    public isLoged = false; 
 
-    formGrup: FormGroup;    
   ngOnInit(): void {
     this.formGrup = this.formBuilder.group({
       login: new FormControl(""),
       pass: new FormControl(""),
+    });
+
+    this.backend.logedstatus.subscribe((value) => {
+      this.isLoged = value;
+      console.log(this.isLoged);
     });
   }
 
