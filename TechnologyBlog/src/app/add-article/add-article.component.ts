@@ -145,5 +145,18 @@ export class AddArticleComponent implements OnInit {
     
   }
 
+  preview(item: any)
+  {
+    if(item.target.files.length > 0) 
+    {
+      this.sectionImg = item.target.files[0];
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(item.target.files[0]);
+    reader.onload = () => {
+      this.imgURL = reader.result as string;
+    }
+  }
+
 
 }
