@@ -26,6 +26,7 @@ export class SearchPopupComponent implements OnInit {
       minTime: new FormControl(),
       maxTime: new FormControl(),
       searchText: new FormControl(),
+      date: new FormControl(),
     });
   }
 
@@ -40,6 +41,7 @@ export class SearchPopupComponent implements OnInit {
     let forms = this.formGrup.getRawValue() as SearchDto;
     forms.Category = this.selectedCategory;
     this.backend.search(forms);
+    this.router.navigate(['SearchResoult']);
   }
 
   dropDownHandler(id: number)

@@ -55,7 +55,8 @@ export class DataBaseService {
   }
   iSLoged: boolean = false;
   logedstatus: Subject<boolean> = new Subject<boolean>();
- 
+  searchOutput: Post[]
+
   ngOnInit(): void {
     
   }
@@ -101,6 +102,56 @@ export class DataBaseService {
     console.log(this.searchInPostTitle(dto.searchText));
     console.log(this.searchTime(dto));
     console.log(this.searchCategory(dto));
+    console.log(this.searchDate(dto));
+
+    let firstcom = this.combineTwo(this.searchInPostTitle(dto.searchText),this.searchTime(dto));
+    let sectcom = this.combineTwo(this.searchCategory(dto),this.searchDate(dto));
+    let finalCom = this.combineTwo(firstcom, sectcom);
+
+    console.log(firstcom);
+    console.log(sectcom);
+    console.log(finalCom);
+
+    this.searchOutput = finalCom;
+  }
+
+  getSearch()
+  {
+    return this.searchOutput;
+  }
+
+  combineTwo(firstList: Post[], secondList: Post[])
+  {
+    let list = [];
+
+    if(firstList.length == 0)
+    {
+      return secondList;
+    }
+
+    if(secondList.length == 0)
+    {
+      return firstList;
+    }
+
+    firstList.forEach(firstitem => {
+      secondList.forEach(seconditem => {
+        if(JSON.stringify(firstitem) === JSON.stringify(seconditem))
+        {
+          list.push(firstitem);
+        }
+      })
+    })
+    return list;
+  }
+
+  searchDate(dto: SearchDto)
+  {
+    if(dto.date == null)
+    {
+      return []
+    }
+    return this.Posts.filter(c => c.date == formatDate(dto.date, 'dd/MM/yyyy', 'en'));
   }
 
   searchCategory(dto: SearchDto)

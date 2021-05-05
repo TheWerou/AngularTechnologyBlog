@@ -11,7 +11,7 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 })
 export class SortViewComponent implements OnInit {
 
-  constructor(private backend: DataBaseService) { }
+  constructor(private backend: DataBaseService,private route: ActivatedRoute) { }
 
   public imagePath: string
   iconArrow = faArrowRight;
@@ -19,14 +19,17 @@ export class SortViewComponent implements OnInit {
   posts: Post[];
   mainLoop: number;
   subLoop: number = 2;
-
+  id: number;
+  private sub: any;
+  
   ngOnInit(): void {
     this.imagePath = "assets/placeholder.jpg";
-    //this.articleList()
+    this.articleList();
+    console.log(this.posts);
   }
 
   public articleList() {
-    this.posts = this.backend.getPost();
+    this.posts = this.backend.getSearch();
   }
 
 }
