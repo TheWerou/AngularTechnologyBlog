@@ -23,6 +23,7 @@ export class AddArticleComponent implements OnInit {
   selectedCategory: Category = null;
   public imagePath;
   imgURL: any;
+  imgURL2: any;
   mainImg: File;
   sectionImg: File;
   editImg: File;
@@ -103,6 +104,12 @@ export class AddArticleComponent implements OnInit {
     sectionForms.title = this.SectionGrup.getRawValue()["Sectiontitle"];
     sectionForms.image = this.sectionImg;
     
+    const reader = new FileReader();
+    reader.readAsDataURL(sectionForms.image);
+    reader.onload = () => {
+      sectionForms.imagePath = reader.result as string;
+    }
+
     this.newSection.push(sectionForms);
     console.log(sectionForms);
     this.sectionStatus = false;
@@ -145,7 +152,20 @@ export class AddArticleComponent implements OnInit {
     
   }
 
-  preview(item: any)
+  preview1(item: any)
+  {
+    if(item.target.files.length > 0) 
+    {
+      this.mainImg = item.target.files[0];
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(item.target.files[0]);
+    reader.onload = () => {
+      this.imgURL = reader.result as string;
+    }
+  }
+
+  preview2(item: any)
   {
     if(item.target.files.length > 0) 
     {
@@ -154,7 +174,7 @@ export class AddArticleComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(item.target.files[0]);
     reader.onload = () => {
-      this.imgURL = reader.result as string;
+      this.imgURL2 = reader.result as string;
     }
   }
 

@@ -26,9 +26,14 @@
         <div class="form-group">
           <legend class="col-form-label">Wybierz zdjęcie</legend>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" (change)="getMainImg($event)" >
+            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" (change)="preview1($event)" >
             <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz" *ngIf="mainImg == null">Wybierz zdjęcie</label>
             <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz" *ngIf="mainImg != null"> {{mainImg.name}}</label>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <img *ngIf="mainImg != null" [src]="imgURL" class="img-thumbnail" alt="Podgląd">
+            </div>
           </div>
         </div>
       </div>
@@ -36,12 +41,19 @@
       <legend class="col-form-label">Dodane sekcje</legend>
       <div class="border rounded p-3 mb-2" *ngFor="let item of newSection; index as i">
         <div *ngIf="!expandableRow[i]">
-          <dl class="row">
-            <dt class="col-sm-1">Tytuł</dt>
-            <dd class="col-sm-11">{{ item.title }}</dd>
-            <dt class="col-sm-1">Tekst</dt>
-            <dd class="col-sm-11">{{ item.SectionText }}</dd>
-          </dl>
+          <div class="row">
+            <div class="col-md-9">
+              <dl class="row">
+                <dt class="col-sm-1">Tytuł</dt>
+                <dd class="col-sm-11">{{ item.title }}</dd>
+                <dt class="col-sm-1">Tekst</dt>
+                <dd class="col-sm-11">{{ item.SectionText }}</dd>
+              </dl>
+            </div>
+            <div class="col-md-3">
+              <img [src]="item.imagePath" class="img-thumbnail" alt="Podgląd">
+            </div>
+          </div>
           <button type="button" (click)="editSectionButton(i)" class="btn btn-dark mr-2">Edytuj</button>
           <button type="button"  class="btn btn-dark">Usuń</button>
         </div>
@@ -72,12 +84,16 @@
         <div class="form-group ">
           <legend class="col-form-label">Wybierz zdjęcie</legend>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" (change)="preview($event);">
+            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" (change)="preview2($event);">
             <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz" *ngIf="sectionImg == null">Wybierz zdjęcie</label>
             <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz" *ngIf="sectionImg != null"> {{sectionImg.name}}</label>
           </div>
         </div>
-        <img *ngIf="sectionImg != null" [src]="imgURL" class="img-thumbnail d-block mb-3" width="40%" alt="Podgląd">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <img *ngIf="sectionImg != null" [src]="imgURL2" class="img-thumbnail" alt="Podgląd">
+          </div>
+        </div>
         <button type="button" (click)="saveSection()" class="btn btn-dark">Zapisz sekcję</button>
       </div>
       <!-- Zapis -->
