@@ -1,19 +1,27 @@
-<div *ngIf="!isLoged" [formGroup]="formGrup">
-    <div class="form-group">
-        <label for="inputPostTitle">Login</label>
-        <input type="text" class="form-control" id="inputPostTitle" placeholder="Tytuł postu" formControlName="login">
-      </div>
-      <div class="form-group">
-        <label for="inputPostTitle">Haslo</label>
-        <input type="text" class="form-control" id="inputPostTitle" placeholder="Tytuł postu" formControlName="pass">
-      </div>
-      <button type="submit" (click)="tryLogin()" class="btn btn-dark">Dodaj post</button>
+<div *ngIf="!isLoged" [formGroup]="formGrup" class="p-3">
+<h1>Logowanie</h1>
+<hr>
+<div class="form-group">
+    <label for="inputLogin">Login</label>
+    <input type="text" class="form-control" id="inputLogin" placeholder="Login" formControlName="login">
+  </div>
+  <div class="form-group">
+    <label for="inputPassword">Hasło</label>
+    <input type="password" class="form-control" id="inputPassword" placeholder="Hasło" formControlName="pass">
+  </div>
+  <button type="submit" (click)="tryLogin()" class="btn btn-dark">Zaloguj się</button>
 </div>
-<div *ngIf="isLoged">
+<div *ngIf="isLoged" class="p-3">
   <h1>Panel użytkownika</h1>
-  <button> Zmien haslo</button> 
-  <button> Zmien email </button> 
-  <button (click)="logOut()"> Log out </button>
+  <hr>
+  <div class="text-center">
+    <div class="btn-group" role="group" aria-label="Przyciski">
+      <button type="button" class="btn btn-dark">Zmień hasło</button>
+      <button type="button" class="btn btn-dark">Zmień email</button>
+      <button type="button" class="btn btn-dark" (click)="logOut()">Wyloguj się</button>
+    </div>
+  </div>
+  <hr>
 </div>
 
 

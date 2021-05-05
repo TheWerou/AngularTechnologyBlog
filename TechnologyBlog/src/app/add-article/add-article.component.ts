@@ -24,6 +24,7 @@ export class AddArticleComponent implements OnInit {
   public imagePath;
   imgURL: any;
   imgURL2: any;
+  imgURL3: any;
   mainImg: File;
   sectionImg: File;
   editImg: File;
@@ -146,7 +147,7 @@ export class AddArticleComponent implements OnInit {
   {
     const reader = new FileReader();
     reader.onload = () => {
-      this.imgURL = reader.result as string;
+      this.imgURL3 = reader.result as string;
     }
     reader.readAsDataURL(item.target.files[0])
     
