@@ -21,12 +21,14 @@ export class NavBarComponent implements OnInit, OnChanges {
   iconUser = faUser;
   iconPlus = faPlus;
   isLoged = false;
+  logo;
 
   categoryList: Category[];
 
   constructor(private backend: DataBaseService, private _modalService: BsModalService,) { }
 
   ngOnInit(): void {
+    this.logo = "assets/logo.png"
     this.list();
     console.log(this.isLoged);
 

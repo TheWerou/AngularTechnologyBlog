@@ -31,7 +31,7 @@ export class ArticleViewComponent implements OnInit {
   }
   public list(id: number) {
     this.post = this.backend.getOnePost(id);
-
+    this.post.imagePath = "assets/placeholder.jpg";
     console.log(this.post);
     console.log(this.mainImgUrl);
     console.log(this.imgsUrls);

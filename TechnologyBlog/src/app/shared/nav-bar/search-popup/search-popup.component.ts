@@ -30,14 +30,11 @@ export class SearchPopupComponent implements OnInit {
       searchText: new FormControl(),
       date: new FormControl(),
     });
-
-    
   }
 
   list()
   {
     this.categorys = this.categorys.concat(this.backend.getCategory()) ;
-
     this.selectedCategory = this.categorys[0];
   }
 
