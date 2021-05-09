@@ -29,10 +29,12 @@ export class NavBarComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.list();
     console.log(this.isLoged);
+
     this.backend.logedstatus.subscribe((value) => {
       this.isLoged = value;
       console.log(this.isLoged);
     });
+    
   }
 
   userPopUp() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataBaseService } from '../services/data-base.service';
+import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-user-view',
@@ -11,7 +12,7 @@ import { DataBaseService } from '../services/data-base.service';
 export class UserViewComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,private backend: DataBaseService,
-    public router: Router) { }
+    public router: Router,private bsModalRef: BsModalRef) { }
     formGrup: FormGroup;   
     public isLoged = false; 
 
@@ -33,11 +34,14 @@ export class UserViewComponent implements OnInit {
     let pass = this.formGrup.getRawValue()["pass"];
     sessionStorage.setItem("User", login);
     sessionStorage.setItem("Pass", pass);
+    this.bsModalRef.hide();
     this.router.navigate(['AddArticleView']);
   }
 
   logOut()
   {
     this.backend.logOut();
+    this.bsModalRef.hide();
   }
+  
 }

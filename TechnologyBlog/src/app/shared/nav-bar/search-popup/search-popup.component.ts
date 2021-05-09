@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@a
 import { Section, Post, Category, User, MainSite, PostDto, SearchDto } from 'src/app/shared/data/InterFaces/InterFaces';
 import { DataBaseService } from 'src/app/services/data-base.service';
 import { Router } from '@angular/router';
-
+import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-search-popup',
@@ -15,9 +15,11 @@ export class SearchPopupComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private backend: DataBaseService,
-    public router: Router) { }
+    public router: Router,
+    private bsModalRef: BsModalRef,) { }
+
   formGrup: FormGroup;
-  categorys: Category[];
+  categorys: Category[] = [{ id: 0, title: 'Wszystko', CategoryText: 'Co słychać w informatyce?', image: "assets/news_background.jpg"}];
   selectedCategory: Category;
 
   ngOnInit(): void {
@@ -34,7 +36,8 @@ export class SearchPopupComponent implements OnInit {
 
   list()
   {
-    this.categorys = this.backend.getCategory();
+    this.categorys = this.categorys.concat(this.backend.getCategory()) ;
+
     this.selectedCategory = this.categorys[0];
   }
 
@@ -44,6 +47,7 @@ export class SearchPopupComponent implements OnInit {
     forms.Category = this.selectedCategory;
     this.backend.search(forms);
     this.router.navigate(['SearchResoult']);
+    this.bsModalRef.hide();
   }
 
   dropDownHandler(id: number)
