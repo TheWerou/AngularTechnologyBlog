@@ -16,16 +16,16 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="mintime">Minimalny czas</label>
-            <input type="text" class="form-control" id="mintime" placeholder="Tytuł postu" formControlName="minTime">
+            <input type="text" class="form-control" id="mintime" placeholder="Minimalny czas" formControlName="minTime">
         </div>
         <div class="form-group col-md-6">
             <label for="maxtime">Maksymalny czas</label>
-            <input type="text" class="form-control" id="maxtime" placeholder="Tytuł postu" formControlName="maxTime">
+            <input type="text" class="form-control" id="maxtime" placeholder="Maksymalny czas" formControlName="maxTime">
         </div>
     </div>
     <div class="form-group">
-        <label for="texttofind">Wyszukaj </label>
-        <input type="text" class="form-control" id="texttofind" placeholder="Tytuł postu" formControlName="searchText">
+        <label for="texttofind">Wyszukaj</label>
+        <input type="text" class="form-control" id="texttofind" placeholder="Czego szukasz?" formControlName="searchText">
     </div>
     <button type="button" class="btn btn-dark btn-block mb-2" (click)="search()">Wyszukaj</button>
 </div>
