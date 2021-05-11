@@ -105,11 +105,15 @@ export class AddArticleComponent implements OnInit {
     sectionForms.title = this.SectionGrup.getRawValue()["Sectiontitle"];
     sectionForms.image = this.sectionImg;
     
-    const reader = new FileReader();
-    reader.readAsDataURL(sectionForms.image);
-    reader.onload = () => {
-      sectionForms.imagePath = reader.result as string;
+    if(sectionForms.image != null)
+    {
+      const reader = new FileReader();
+      reader.readAsDataURL(sectionForms.image);
+      reader.onload = () => {
+        sectionForms.imagePath = reader.result as string;
+      }
     }
+
 
     this.newSection.push(sectionForms);
     console.log(sectionForms);
