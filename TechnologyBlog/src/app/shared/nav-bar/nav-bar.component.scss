@@ -10,3 +10,11 @@
 .my-nav-link:focus{
     color: #cccecf !important;
 }
+.my-nav-margin{
+    margin-left: 113px;
+}
+@media (max-width: 991px) {
+    .my-nav-margin{
+        margin-left: 0px;
+    }
+}
