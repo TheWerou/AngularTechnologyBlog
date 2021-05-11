@@ -19,6 +19,7 @@ export class ArticleViewComponent implements OnInit {
   post: Post;
   mainImgUrl: string;
   imgsUrls: string[] = [];
+  addvertisedPost: Post[];
 
 
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class ArticleViewComponent implements OnInit {
   }
   public list(id: number) {
     this.post = this.backend.getOnePost(id);
+    this.addvertisedPost = this.backend.getRandomPosts();
     this.post.imagePath = "assets/placeholder.jpg";
     console.log(this.post);
     console.log(this.mainImgUrl);

@@ -26,18 +26,18 @@ export class DataBaseService {
     { id: 5, title: 'Tutoriale', CategoryText: 'Porady, Tutoriale, Checklisty', image: "assets/tutorial_background.jpg"},
   ];
   public Posts: Post[] = [
-    { id: 1, title: 'Coraz więcej ludzi programuje w HTML', Category: this.Categorys[0], ReadTime: 15 , date: '20/12/2021' ,DescriptionText: 'Coraz więcej ludzi programuje w HTML', PostText: 'cos tam cos tam', Sections: this.testSections },
-    { id: 2, title: 'Jak zrobić a się nie narobić?', Category: this.Categorys[4], ReadTime: 5 , date: '02/08/2020' ,DescriptionText: 'Jak zrobić a się nie narobić?', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 3, title: 'Entity frameworkk', Category: this.Categorys[1], ReadTime: 7 , date: '14/05/2019' ,DescriptionText: 'Entity frameworkk', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 4, title: 'Migracje w Django',Category: this.Categorys[2], ReadTime: 8 , date: '25/01/2020' ,DescriptionText: 'Migracje w Django', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 5, title: 'File table w Entity framework',Category: this.Categorys[1], ReadTime: 10 , date: '22/02/2021' ,DescriptionText: 'File table w Entity framework', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 6, title: 'GUI w PyQt',Category: this.Categorys[2], ReadTime: 12 , date: '21/03/2020' ,DescriptionText: 'GUI w PyQt', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 7, title: 'Sztuczna inteligencja w nowym iphonie',Category: this.Categorys[3], ReadTime: 11 , date: '21/03/2018' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 8, title: 'Aplikacja mobina w pythonie',Category: this.Categorys[2], ReadTime: 12 , date: '21/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam',Sections: this.testSections },
-    { id: 9, title: 'Xamarin co i jak',Category: this.Categorys[1], ReadTime: 22 , date: '22/05/2020' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 10, title: 'Podstawowy kurs c++',Category: this.Categorys[4], ReadTime: 32 , date: '17/06/2020' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 11, title: 'Pojemniki na dane jak z nich korzystać i po co?',Category: this.Categorys[4], ReadTime: 12 , date: '20/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections},
-    { id: 12, title: 'Elon musk wydaje smartfona',Category: this.Categorys[3], ReadTime: 12 , date: '24/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections},
+    { id: 1, title: 'Coraz więcej ludzi programuje w HTML', Category: this.Categorys[0], ReadTime: 15 , date: '20/12/2021' ,DescriptionText: 'Coraz więcej ludzi programuje w HTML', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/python_background.jpg" },
+    { id: 2, title: 'Jak zrobić a się nie narobić?', Category: this.Categorys[4], ReadTime: 5 , date: '02/08/2020' ,DescriptionText: 'Jak zrobić a się nie narobić?', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/1.png"},
+    { id: 3, title: 'Entity frameworkk', Category: this.Categorys[1], ReadTime: 7 , date: '14/05/2019' ,DescriptionText: 'Entity frameworkk', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/2.jpg"},
+    { id: 4, title: 'Migracje w Django',Category: this.Categorys[2], ReadTime: 8 , date: '25/01/2020' ,DescriptionText: 'Migracje w Django', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/3.jpg"},
+    { id: 5, title: 'File table w Entity framework',Category: this.Categorys[1], ReadTime: 10 , date: '22/02/2021' ,DescriptionText: 'File table w Entity framework', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/4.jpg"},
+    { id: 6, title: 'GUI w PyQt',Category: this.Categorys[2], ReadTime: 12 , date: '21/03/2020' ,DescriptionText: 'GUI w PyQt', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/python_background.jpg"},
+    { id: 7, title: 'Sztuczna inteligencja w nowym iphonie',Category: this.Categorys[3], ReadTime: 11 , date: '21/03/2018' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/5.jpg"},
+    { id: 8, title: 'Aplikacja mobina w pythonie',Category: this.Categorys[2], ReadTime: 12 , date: '21/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam',Sections: this.testSections , imagePath: "assets/6.jpg"},
+    { id: 9, title: 'Xamarin co i jak',Category: this.Categorys[1], ReadTime: 22 , date: '22/05/2020' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/7.jpg"},
+    { id: 10, title: 'Podstawowy kurs c++',Category: this.Categorys[4], ReadTime: 32 , date: '17/06/2020' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/1.png"},
+    { id: 11, title: 'Pojemniki na dane jak z nich korzystać i po co?',Category: this.Categorys[4], ReadTime: 12 , date: '20/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections, imagePath: "assets/4.jpg"},
+    { id: 12, title: 'Elon musk wydaje smartfona',Category: this.Categorys[3], ReadTime: 12 , date: '24/12/2021' ,DescriptionText: 'cos tam cos tam', PostText: 'cos tam cos tam', Sections: this.testSections,imagePath: "assets/5.jpg"},
   ];
   public Users: User[] = [
     { id: 1, Name: 'Adam', Pass: '123qwe', },
@@ -239,5 +239,28 @@ export class DataBaseService {
   getMainSite(): MainSite
   {
     return this.MainSite;
+  }
+
+  getRandomPosts()
+  {
+    let ouptSet = new Set<Post>();
+    let outputlist: Post[] = [];
+    var number; 
+    var iterator = 0;
+    while(iterator < 5)
+    {
+      number = this.randomIntFromInterval(0, this.Posts.length);
+      if(!ouptSet.has(this.Posts[number]))
+      {
+        ouptSet.add(this.Posts[number])
+        iterator += 1;
+      }
+      
+    }
+    return Array.from(ouptSet);
+  }
+
+  randomIntFromInterval(min, max) { 
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }
