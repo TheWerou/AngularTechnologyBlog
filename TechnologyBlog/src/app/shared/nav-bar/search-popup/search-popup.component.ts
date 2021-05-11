@@ -42,6 +42,8 @@ export class SearchPopupComponent implements OnInit {
   {
     let forms = this.formGrup.getRawValue() as SearchDto;
     forms.Category = this.selectedCategory;
+    console.log(forms);
+    
     this.backend.search(forms);
     this.router.navigate(['SearchResoult']);
     this.bsModalRef.hide();

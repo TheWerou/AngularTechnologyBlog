@@ -12,11 +12,9 @@
     <div class="container" style="margin-top: -60px; margin-bottom: 20px;" >
         <div class="">
             <div class="row ">
-
                 <div class="col-md-6 pb-3" *ngFor="let post of posts; index as i">
                     <div class="card" style="box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);">
-                        <div class="card-img-top-my" *ngIf="post.image == null" [ngStyle]="{ 'background-image': 'url(' + imagePath + ')'}"></div>
-                        <div class="card-img-top-my" *ngIf="post.image != null" [ngStyle]="{ 'background-image': 'url(' + post.imagePath + ')'}"></div>
+                        <div class="card-img-top-my" [ngStyle]="{ 'background-image': 'url(' + post.imagePath + ')'}"></div>
                         <p class="text-muted m-0" style="padding-left: 1.25rem;"> {{ post.date }} </p>
                         <div class="card-body">
                             <h5 class="card-title">{{post.Category.title}}</h5>
@@ -26,6 +24,12 @@
                             <span>Czas czytania: {{post.ReadTime}} min </span>
                             <a [routerLink]="['/ArticleView/', post.id]" class="card-link ml-auto my-card-link">Czytaj dalej <fa-icon [icon]="iconArrow"></fa-icon></a>
                         </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 pb-3" *ngIf="posts.length == 0">
+                    <div class="card" style="box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);">
+                        <h2 class="m-2 text-center" >Przepraszamy ale nic nie znaleźliśmy</h2>
                     </div>
                 </div>
                 
