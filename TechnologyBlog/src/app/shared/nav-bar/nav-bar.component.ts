@@ -22,7 +22,6 @@ export class NavBarComponent implements OnInit, OnChanges {
   iconPlus = faPlus;
   isLoged = false;
   logo;
-
   categoryList: Category[];
 
   constructor(private backend: DataBaseService, private _modalService: BsModalService,) { }
