@@ -1,1 +1,108 @@
-<p>add-article works!</p>
+<section class="container" style="min-height: calc(100vh - 120px);">
+  <h1 class="mt-2 pb-3">Dodawanie artykułu</h1>
+  <div class="border rounded p-3 my-2 bg-light">
+    <form>
+      <!-- Dodanie arykułu -->
+      <div [formGroup]="formGrup">
+        <div class="form-group">
+          <label for="inputPostTitle">Tytuł postu</label>
+          <input type="text" class="form-control" id="inputPostTitle" placeholder="Tytuł postu" formControlName="title">
+        </div>
+        <div class="form-group">
+          <label for="inputProject">Projekt</label>
+          <select id="inputProject" class="form-control" (change)="selectCategory($event.target.value)">
+            <option selected disabled>Wybierz projekt</option>
+            <option *ngFor="let catitem of categoryList; index as i" [value]="catitem.id">{{ catitem.title }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputPostText">Tekst postu</label>
+          <input type="text" class="form-control" id="inputPostText" placeholder="Tekst postu" formControlName="PostText">
+        </div>
+        <div class="form-group">
+          <label for="inputPostTime">Czas czytania postu</label>
+          <input type="text" class="form-control" id="inputPostTime" placeholder="Czas czytania postu" formControlName="ReadTime">
+        </div>
+        <div class="form-group">
+          <legend class="col-form-label">Wybierz zdjęcie</legend>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" (change)="preview1($event)" >
+            <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz" *ngIf="mainImg == null">Wybierz zdjęcie</label>
+            <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz" *ngIf="mainImg != null"> {{mainImg.name}}</label>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <img *ngIf="mainImg != null" [src]="imgURL" class="img-thumbnail" alt="Podgląd">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Dodane sekcje -->
+      <legend class="col-form-label">Dodane sekcje</legend>
+      <div class="border rounded p-3 mb-2" *ngFor="let item of newSection; index as i">
+        <div *ngIf="!expandableRow[i]">
+          <div class="row">
+            <div class="col-md-9">
+              <dl class="row">
+                <dt class="col-sm-1">Tytuł</dt>
+                <dd class="col-sm-11">{{ item.title }}</dd>
+                <dt class="col-sm-1">Tekst</dt>
+                <dd class="col-sm-11">{{ item.SectionText }}</dd>
+              </dl>
+            </div>
+            <div class="col-md-3">
+              <img [src]="item.imagePath" class="img-thumbnail" alt="Podgląd">
+            </div>
+          </div>
+          <button type="button" (click)="editSectionButton(i)" class="btn btn-dark mr-2">Edytuj</button>
+          <button type="button"  class="btn btn-dark">Usuń</button>
+        </div>
+        <div [formGroup]="SectionEditGrup" *ngIf="expandableRow[i] && editArticle">
+          <div class="form-group">
+            <label for="inputSectionTitle">Tytuł sekcji</label>
+            <input type="text" class="form-control" id="inputSectionTitle" placeholder="Tytuł sekcji" formControlName="SectiontitleEdit">
+          </div>
+          <div class="form-group">
+            <label for="inputSectionText">Tekst sekcji</label>
+            <textarea class="form-control" id="inputSectionText" rows="3" formControlName="SectionTextEdit"></textarea>
+          </div>
+          <button type="button" (click)="editSection(i)" class="btn btn-dark">Zapisz sekcję</button>
+        </div>
+      </div>
+      <!-- Sekcja -->
+      <button *ngIf="!sectionStatus" (click)="addSection()" type="button" class="btn btn-dark btn-block mb-2">Dodaj Sekcje</button>
+      <button *ngIf="sectionStatus" (click)="sectionStatus = !sectionStatus" type="button" class="btn btn-dark btn-block mb-2">Anuluj</button>
+      <div class="border rounded p-3 mb-2" [formGroup]="SectionGrup" *ngIf="sectionStatus">
+        <div class="form-group">
+          <label for="inputSectionTitle">Tytuł sekcji</label>
+          <input type="text" class="form-control" id="inputSectionTitle" placeholder="Tytuł sekcji" formControlName="Sectiontitle">
+        </div>
+        <div class="form-group">
+          <label for="inputSectionText">Tekst sekcji</label>
+          <textarea class="form-control" id="inputSectionText" rows="3" formControlName="SectionText"></textarea>
+        </div>
+        <div class="form-group ">
+          <legend class="col-form-label">Wybierz zdjęcie</legend>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputAddImage" aria-describedby="inputAddImage1" (change)="preview2($event);">
+            <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz" *ngIf="sectionImg == null">Wybierz zdjęcie</label>
+            <label class="custom-file-label" for="inputAddImage" data-browse="Wybierz" *ngIf="sectionImg != null"> {{sectionImg.name}}</label>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <img *ngIf="sectionImg != null" [src]="imgURL2" class="img-thumbnail" alt="Podgląd">
+          </div>
+        </div>
+        <button type="button" (click)="saveSection()" class="btn btn-dark">Zapisz sekcję</button>
+      </div>
+      <!-- Zapis -->
+      <button type="submit" (click)="save()" class="btn btn-dark">Dodaj post</button>
+    </form>
+  </div>
+</section>
+
+
+  <!-- Cards start -->
+  
+  

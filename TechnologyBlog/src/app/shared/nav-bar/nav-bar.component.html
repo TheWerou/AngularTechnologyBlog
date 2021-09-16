@@ -1,15 +1,24 @@
-<nav class="navbar sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">LOGO</a>
-
-    <div class="row" >
-        <diV *ngFor="let category of categoryList">
-            <a [routerLink]="['CategoryView/', category.id]" > <div class="col-xs-6 navbar-brand" > {{category.title}}</div></a>
-        </diV>
-        
-    </div>
-    <div class="row" >
-        <fa-icon  class="col-xs-6 navbar-brand" [icon]="iconSearch"></fa-icon>
-        <fa-icon  class="col-xs-6 navbar-brand" [icon]="iconUser"></fa-icon>
-        <fa-icon  class="col-xs-6 navbar-brand" [icon]="iconPlus"></fa-icon>
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+    <a class="navbar-brand mr-0" [routerLink]="['']"><img  [src]="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto font-weight-bold">
+          <li class="nav-item" *ngFor="let category of categoryList">
+            <a class="nav-link my-nav-link px-lg-4" [routerLink]="['CategoryView/', category.id]">{{category.title}}</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav my-nav-margin">
+            <li class="nav-item">
+              <a class="nav-link"  (click)="searchPopUp()"><fa-icon [icon]="iconSearch"></fa-icon></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="userPopUp()" ><fa-icon [icon]="iconUser"></fa-icon></a>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" *ngIf="isLoged" [routerLink]="['AddArticleView/']"><fa-icon [icon]="iconPlus"></fa-icon></a>
+            </li>
+        </ul>
     </div>
 </nav>

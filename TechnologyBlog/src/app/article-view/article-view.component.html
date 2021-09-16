@@ -1,1 +1,47 @@
-<p>article-view works!</p>
+<!-- Top image start -->
+<div class="container-fluid main-image d-flex align-items-center"
+    [ngStyle]="{ 'background-image': 'url(' + post.imagePath + ')'}">
+    <div class="my-bg-dark"></div>
+    <div class="container-fluid">
+        <h4 class="main-text text-light m-0"> {{post.Category.title}} </h4>
+        <h1 class="main-text text-white mtm pb-4 m-0"> {{post.title}} </h1>
+        <h5 class="main-text text-light main-line pt-4 m-0">Czas czytania: {{post.ReadTime}} min</h5>
+    </div>
+</div>
+<!-- Top image end -->
+<!-- Article start -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 bg-light pt-2 mb-3" style="box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);">
+            <div *ngFor="let item of post.Sections; index as i">
+                <div class="d-flex justify-content-between">
+                    <h1>{{item.title}} </h1>
+                    <h2 *ngIf="i == 0"><fa-icon (click)="deletePopUp()" [icon]="faTrash"></fa-icon></h2>
+                </div>
+                <p>{{item.SectionText}}</p>
+                <div class="row" *ngIf="item.imagePath != null">
+                    <div class="col-md-6">
+                        <img class="img-thumbnail my-1" [src]="item.imagePath">
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-muted mb-2"> {{post.date}} </div>
+        </div>
+        <div class="col-md-4 d-none d-md-block pt-2">
+            <div class="text-center py-3 border-top border-secondary font-weight-bold">Zobacz inne artykuły</div>
+            <div *ngFor="let item2 of addvertisedPost" class="my-3"
+                style="box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);">
+                <a [routerLink]="['/ArticleView/', item2.id]" class="img-wrap-link">
+                    <div class="img-wrap">
+                        <img class="img-fluid" [src]="item2.imagePath">
+                        <div class="img-wrap-bg"></div>
+                        <div class="img-wrap-text text-center font-weight-bold"> {{ item2.title }} </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Article end -->

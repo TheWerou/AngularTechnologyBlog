@@ -11,6 +11,14 @@ import { CategoryViewComponent } from './category-view/category-view.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FotterComponent } from './shared/fotter/fotter.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SortViewComponent } from './sort-view/sort-view.component';
+import { SearchPopupComponent } from './shared/nav-bar/search-popup/search-popup.component';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { UserViewComponent } from './user-view/user-view.component';
+import { DeletePopupComponent } from './article-view/delete-popup/delete-popup.component';
+
+
 
 @NgModule({
   declarations: [
@@ -20,15 +28,21 @@ import { FotterComponent } from './shared/fotter/fotter.component';
     ArticleViewComponent,
     AddArticleComponent,
     CategoryViewComponent,
-    FotterComponent
+    FotterComponent,
+    SortViewComponent,
+    SearchPopupComponent,
+    UserViewComponent,
+    DeletePopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

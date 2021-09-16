@@ -3,19 +3,25 @@ export interface Section {
   title: string;
   SectionText: string;
   image?: File
+  imagePath?: string;
 }
 export interface Post {
   id: number;
+  date: string;
   title: string;
+  Category: Category;
+  DescriptionText: string;
   PostText: string;
+  ReadTime: number;
   image?: File
+  imagePath?: string
   Sections?: Section[];
 }
 export interface Category {
   id: number;
   title: string;
   CategoryText: string;
-  image?: File
+  image?: string;
   Posts?: Post[];
 }
 export interface User {
@@ -30,4 +36,21 @@ export interface MainSite {
   leftDescription: string;
   rightDescription: string;
   image?: File
+}
+export interface PostDto {
+  title: string;
+  Category: Category;
+  DescriptionText: string;
+  PostText: string;
+  ReadTime: number;
+  image?: File
+  Sections?: Section[];
+}
+export interface SearchDto {
+  amountPhoto: string,
+  minTime: string,
+  maxTime: string,
+  searchText: string,
+  date: Date;
+  Category: Category;
 }

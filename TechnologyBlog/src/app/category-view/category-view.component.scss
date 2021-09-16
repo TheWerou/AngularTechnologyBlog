@@ -1,0 +1,90 @@
+.main-image{
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: calc(100vh - 56px);
+    background-position-x: left;
+    background-position-y: center;
+    color: white;
+    position: relative;
+  }
+  .main-top{
+    position: relative;
+    z-index: 1;
+    padding-bottom: 8rem;
+    font-size: 4rem;
+  }
+  .my-bg-dark{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+  .main-left::after {
+    position: absolute;
+    content: '';
+    background-color: white;
+    height: 1px;
+    top: 0px; 
+    width: 60%;
+  }
+  .main-right::after {
+    position: absolute;
+    content: '';
+    background-color: white;
+    height: 1px;
+    top: 0px; 
+    right: 0px;
+    width: 60%;
+  }
+  .card{
+    color: black;
+  }
+  .card-img-top-my{
+    margin: 1.25rem 1.25rem 0rem 1.25rem;
+    width: auto;
+    height: 300px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+  }
+  .card-text-line{
+    position: relative;
+  }
+  .card-text-line::before{
+    position: absolute;
+    content: '';
+    background-color: black;
+    height: 1px;
+    top: -6px; 
+    width: 50%;
+  }
+  .my-card-link{
+    color: #343a40;
+  }
+  .my-card-link:hover{
+    color: #6c757d;
+  }
+  @media (max-width: 991px) {
+    .main-top{
+      padding-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+    .main-left{
+      border-top: 1px solid white;
+    }
+    .main-left::after {
+      display: none;
+    }
+    .main-right{
+      border-top: 1px solid white;
+    }
+    .main-right::after {
+      display: none;
+    }
+  }
